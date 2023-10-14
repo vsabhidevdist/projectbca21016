@@ -8,7 +8,7 @@ if(!isset($a)){
 $dao=new DataAccess();
 
 
-  $fields2=array('id','status');
+  $fields2=array('id','status','id','doctor_id');
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
   
 
@@ -21,7 +21,20 @@ $dao=new DataAccess();
       header('Location: /projectbca21016/user/payment/confirmation.php'); 
     }
     else{
-      print_r($bookstat);
+      if(isset($_POST['next'])){
+        $data=array(
+            'status'=>'confirm'
+        );
+        $fields=array('fee');
+       $info=$dao->getDataJoin($fields,'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
+        $paydata=array(
+          'booking_id'=>$bookstat[0]['id'],
+          'amount'=>$info[0]['fee']
+        );
+        if($dao->update($data,'booking','id='.$_SESSION['booking_id']) && $dao->insert($paydata,'payment')){
+          header('Location: confirmation.php'); 
+        }
+      }
     }
 
 
@@ -87,6 +100,9 @@ return false;
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link rel="stylesheet" href="payment/style.css">
 <meta name="robots" content="noindex,follow" />
+<style >
+  </style>
+
 </head>
 <body>
 <form action=""  method="POST" onSubmit="return validations()" enctype="multipart/form-data">
@@ -157,14 +173,12 @@ return false;
 
     <div class="panel-footer">
       <button class="btn back-btn">Back</button>
-      <button class="btn next-btn" type="submit"  name="next" >Next Step</button>
+      <button class="btn next-btn" type="submit" value='submit'  name="next" >Next Step</button>
 		
 		
     </div>
   </div>
 	</form>
-	
-	
 	<?php
 if(isset($_POST["next"]))
 {

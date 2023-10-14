@@ -2,8 +2,9 @@
 
 <?php
 $dao=new DataAccess();
-$a=$_SESSION['user_id'];
-if(isset($a)){
+
+if(isset($_SESSION['user_id'])){
+  $a=$_SESSION['user_id'];
   $fields2=array('id','status');
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
   
@@ -14,7 +15,7 @@ if(isset($a)){
       header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
     }
   
-}
+  }
 
 
 

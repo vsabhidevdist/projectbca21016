@@ -1,9 +1,23 @@
-<?php require('../../config/autoload.php'); ?>
+<?php require('../../config/autoload.php'); 
+$dao=new DataAccess();
+if(isset($_SESSION['user_id'])){
+  $a=$_SESSION['user_id'];
+  $fields2=array('id','status');
+  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
+  
+
+   
+    if($bookstat[0]['status']=='paymentpending'){
+
+      header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+    }
+  
+}
+?>
 <?php
 	
 
 include("header.php");
-$dao=new DataAccess();
 
 
 

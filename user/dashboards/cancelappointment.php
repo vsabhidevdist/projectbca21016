@@ -9,17 +9,14 @@ $dao=new DataAccess();
 
 
   $fields2=array('id','status','doctor_id','appo_date','appo_time','slot');
-  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
-  
+  $bookstat=$dao->getDataJoin($fields2,'booking','id='.$_GET['bid'].' LIMIT 1');
+  if($_GET['bid']!==$bookstat[0]['id'])
 
     if($bookstat[0]['id']!=$_SESSION['booking_id']){
 
       header('Location: /projectbca21016/403.html'); 
     }
-    if($bookstat[0]['status']=='confirm'){
-
-      header('Location: /projectbca21016/user/payment/confirmation.php'); 
-    }
+ 
     else{
         $doc=$dao->getDataJoin(['name','fee'],'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
       $d =$bookstat[0]['appo_date'];
@@ -40,9 +37,7 @@ $dao=new DataAccess();
             echo 'hi';
         }
       }
-      if(isset($_POST['pay'])){
-       header('Location:pay.php');
-      }
+   
     }
     
 
@@ -246,7 +241,7 @@ input:focus:-ms-input-placeholder {
 
 <div class="card mt-50 mb-50">
             <div class="card-title mx-auto">
-            Pending Appointment
+           Cancel Appointment
             </div>
             <div class="nav">
                 <ul class="mx-auto">
@@ -285,7 +280,7 @@ input:focus:-ms-input-placeholder {
                     </div>
                 </div>
                 <button class="btn d-flex mx-auto" name='cancel' value='cancel'><b>Cancel</b></button>
-                <button class="btn d-flex mx-auto" name='pay' value='pay'><b>Pay</b></button>
+               
             </form>
         </div>
 
