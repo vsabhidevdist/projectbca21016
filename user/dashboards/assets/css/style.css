@@ -213,7 +213,9 @@ h6 {
   font-size: 14px;
   display: inline-block;
 }
-
+.padd{
+  padding-bottom: 15px;
+}
 .appointment-btn:hover {
   background: #166ab5;
   color: #fff;

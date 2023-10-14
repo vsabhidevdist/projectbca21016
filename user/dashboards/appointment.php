@@ -4,6 +4,19 @@ $a=$_SESSION['user_id'];
 if(!isset($a))
 header('Location: /projectbca21016/user/login.php');
 echo $_SESSION['user_id'];
+$dao=new DataAccess();
+if(isset($a)){
+  $fields2=array('id','status');
+  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
+  
+
+   
+    if($bookstat[0]['status']=='paymentpending'){
+
+      header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+    }
+  
+}
 include("header.php") ;
 function convertToTimeSlots($start, $end) {
   $timeSlots = array();
@@ -22,7 +35,7 @@ $doctorid=$_GET['id'];
 $elements=array(
   'appo_date'=>"",'appo_time'=>"","doctor_id"=>"","slot"=>"","user_id"=>"","booked_datetime"=>"","status"=>"");
 
-        $dao=new DataAccess();
+      
         $fields=array('name','department','qualification','image','description');
         $info=$dao->getDataJoin($fields,'doctor','id='.$_GET['id']);
         
