@@ -2,19 +2,45 @@
 
 <?php
 $dao=new DataAccess();
-
+class UndefinedArrayKeyException extends Exception {
+  public function __construct($key) {
+      parent::__construct("Undefined array key: $key");
+  }
+}
+class ArrayOffsetException extends Exception {
+  public function __construct($key) {
+      parent::__construct("Undefined array key: $key");
+  }
+}
 if(isset($_SESSION['user_id'])){
   $a=$_SESSION['user_id'];
   $fields2=array('id','status');
+  try{
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
   
 
    
-    if($bookstat[0]['status']=='paymentpending'){
 
-      header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+     if($bookstat[0]['status']=='paymentpending'){
+       
+       header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+      }
     }
-  
+    catch(UndefinedArrayKeyException $e){
+      $k='fg';
+      echo $e->getMessage();
+    }
+  catch (Exception $e) {
+    echo "An unexpected exception occurred: " . $e->getMessage();
+}
+
+catch (ArrayOffsetException $e) {
+  echo "An unexpected exception occurred: " . $e->getMessage();
+}
+
+
+
+
   }
 
 
@@ -30,7 +56,7 @@ if(isset($_SESSION['user_id'])){
       <div class="container">
 
         <div class="section-title">
-          <h2>Departments</h2>
+          <h2>--</h2>
           <p><h2>Departments</h2></p>
         </div>
 

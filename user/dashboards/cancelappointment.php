@@ -9,7 +9,7 @@ $dao=new DataAccess();
 
 
   $fields2=array('id','status','doctor_id','appo_date','appo_time','slot');
-  $bookstat=$dao->getDataJoin($fields2,'booking','id='.$_GET['bid'].' LIMIT 1');
+  $bookstat=$dao->getDataJoin($fields2,'booking','id='.$_SESSION['user_id'].' LIMIT 1');
   if($_GET['bid']!==$bookstat[0]['id'])
 
     if($bookstat[0]['id']!=$_SESSION['booking_id']){
@@ -18,7 +18,8 @@ $dao=new DataAccess();
     }
  
     else{
-        $doc=$dao->getDataJoin(['name','fee'],'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
+        $fields3=array('id','status','doctor_id','appo_date','appo_time','slot');
+        $doc=$dao->getDataJoin($fields3,'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
       $d =$bookstat[0]['appo_date'];
        $t=$bookstat[0]['appo_time'];
        $s=$bookstat[0]['slot'];

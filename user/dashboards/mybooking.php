@@ -78,9 +78,9 @@ if(isset($_POST['cancel']))
         }
         $appotime=$booking['appo_time'];
        if($booking['status']='confirm' || $booking['status']='consulted'){
-        $fields3=array('id');
+        $fields3=array('id','amount');
         $rec=$dao->getDataJoin($fields3,'payment','booking_id='.$booking['id']);
-        
+        $amt=$rec[0]['amount'];
         $rec_no=$rec[0]['id'];
        }
        else $rec_no='-- ';
@@ -121,8 +121,8 @@ echo "
                 </div>
                 <div class=\"d-flex flex-row mb-2 mt-2\">
                     <div class=\"me-3\">
-                        <p class=\"mb-0 me-2 akscolr4 fs013\">Receipt No</p>
-                        <h6 class=\"mb-1 fs13 ft-wight-1\">$rec_no</h6>
+                        <p class=\"mb-0 me-2 akscolr4 fs013\">Receipt No & Amount</p>
+                        <h6 class=\"mb-1 fs13 ft-wight-1\">$rec_no - Consultation Fee Rs.$amt</h6>
                     </div>
                    
                 </div>

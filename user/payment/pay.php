@@ -16,10 +16,7 @@ $dao=new DataAccess();
 
       header('Location: /projectbca21016/403.html'); 
     }
-    if($bookstat[0]['status']=='confirm'){
-
-      header('Location: /projectbca21016/user/payment/confirmation.php'); 
-    }
+   
     else{
       if(isset($_POST['next'])){
         $data=array(
