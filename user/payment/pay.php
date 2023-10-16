@@ -9,7 +9,7 @@ $dao=new DataAccess();
 
 
   $fields2=array('id','status','id','doctor_id');
-  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
+  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 1');
   
 
     if($bookstat[0]['id']!=$_SESSION['booking_id']){
@@ -25,11 +25,11 @@ $dao=new DataAccess();
         $fields=array('fee');
        $info=$dao->getDataJoin($fields,'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
         $paydata=array(
-          'booking_id'=>$bookstat[0]['id'],
+          'booking_id'=>$_SESSION['booking_id'],
           'amount'=>$info[0]['fee']
         );
-        if($dao->update($data,'booking','id='.$_SESSION['booking_id']) && $dao->insert($paydata,'payment')){
-          header('Location: confirmation.php'); 
+        if($dao->update($data,'booking','id='.$bookstat[0]['id']) && $dao->insert($paydata,'payment')){
+          echo "<script>location.replace('/projectbca21016/user/payment/confirmation.php');</script>";
         }
       }
     }
@@ -176,18 +176,7 @@ return false;
     </div>
   </div>
 	</form>
-	<?php
-if(isset($_POST["next"]))
-{
-//echo $POST["ename"];
-$empname = $_POST["Cname"];
 
-
-echo "<script> alert('$empname');</script> ";
-
-
-}
-	?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="script.js"></script>
   

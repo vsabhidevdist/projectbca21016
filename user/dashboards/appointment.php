@@ -111,7 +111,7 @@ $data=array(
     if($dao->insert($data,"booking"))
     {
       $fields3=array('id');
-      $info2=$dao->getDataJoin($fields3,'booking','user_id='.$a.' LIMIT 1');
+      $info2=$dao->getDataJoin($fields3,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 1');
       $_SESSION['booking_id']=$info2[0]['id'];
       $book_id=$_SESSION['booking_id'];
       echo "<script>location.replace('/projectbca21016/user/payment/pay.php');</script>";

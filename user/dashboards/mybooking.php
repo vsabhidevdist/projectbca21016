@@ -16,7 +16,7 @@ $bookstat1=$dao->getDataJoin($fields5,'booking','user_id='.$a.' LIMIT 1');
     }
     else{
         $fields2=array('id','doctor_id','booked_datetime','appo_date','appo_time','slot','status');
-        $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 10');
+        $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 10');
         
     }
 
@@ -52,7 +52,7 @@ if(isset($_POST['cancel']))
 
 
    foreach($bookstat as $bookings=>$booking){
-    if($booking['status']=='confirm' || $booking['status']=='pendingpayment'){
+    if($booking['status']=='consulted' || $booking['status']=='cancelled'){
         $cancelbtn='';
     }
     else{
@@ -77,13 +77,22 @@ if(isset($_POST['cancel']))
             case 'consulted':$s='Consulted';break;
         }
         $appotime=$booking['appo_time'];
-       if($booking['status']='confirm' || $booking['status']='consulted'){
+       if($booking['status']!='pendingpayment' ){
         $fields3=array('id','amount');
-        $rec=$dao->getDataJoin($fields3,'payment','booking_id='.$booking['id']);
+        
+        $rec=$dao->getDataJoin($fields3,'payment','booking_id='.$booking['id'].' LIMIT 1');
+        
+        
         $amt=$rec[0]['amount'];
-        $rec_no=$rec[0]['id'];
-       }
-       else $rec_no='-- ';
+            $rec_no=$rec[0]['id']; 
+            $msg="receipt";
+
+        }else{
+            $rec_no=' -- ';
+            $amt=' -- ';
+        }
+       
+    
        
        $fields=array('id','name','department','qualification','image');
        $info=$dao->getDataJoin($fields,'doctor','id='.$booking['doctor_id']);
