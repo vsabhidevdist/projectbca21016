@@ -351,14 +351,14 @@ echo "Error occured";
                     }
                     $bookm=array();
                     $booke=array();
+                    
+                    echo "</div>
+                    <div class=\"col-lg-4 text-center order-1 order-lg-2\">
+                    
+                    </div>
+                    </div>
+                    </div>";
                   }
-                  
-                  echo "</div>
-              <div class=\"col-lg-4 text-center order-1 order-lg-2\">
-              
-              </div>
-              </div>
-              </div>";
               
               
             
