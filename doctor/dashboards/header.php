@@ -119,6 +119,7 @@ if(isset($_SESSION['doctor_id'])){
               <span class="menu-title">View Records</span>
             </a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="schedule.php">
               <i class="mdi mdi-file-document-box menu-icon"></i>
