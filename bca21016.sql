@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 18, 2023 at 08:38 AM
+-- Generation Time: Oct 20, 2023 at 10:03 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `slot` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
@@ -89,7 +89,8 @@ INSERT INTO `booking` (`id`, `doctor_id`, `user_id`, `booked_datetime`, `appo_da
 (84, 1, 1, '2023-10-18 13:36:04', '2023-10-18', '11:30', 'consulted', 'm'),
 (85, 1, 1, '2023-10-18 13:39:24', '2023-10-18', '08:00', 'consulted', 'm'),
 (86, 1, 1, '2023-10-18 13:42:49', '2023-10-18', '08:00', 'consulted', 'm'),
-(87, 1, 1, '2023-10-18 13:51:13', '2023-10-19', '08:00', 'confirm', 'm');
+(87, 1, 1, '2023-10-18 13:51:13', '2023-10-19', '08:00', 'confirm', 'm'),
+(88, 1, 1, '2023-10-20 14:42:30', '2023-10-20', '08:00', 'confirm', 'm');
 
 -- --------------------------------------------------------
 
@@ -264,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `amount` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `booking_id` (`booking_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payment`
@@ -285,7 +286,8 @@ INSERT INTO `payment` (`id`, `booking_id`, `amount`) VALUES
 (20, 84, 300),
 (21, 85, 300),
 (22, 86, 300),
-(23, 87, 300);
+(23, 87, 300),
+(24, 88, 300);
 
 -- --------------------------------------------------------
 
@@ -328,23 +330,26 @@ INSERT INTO `record` (`rid`, `did`, `pid`, `m_h`, `m_a`, `r_mp`, `v_s`, `lab_res
 
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE IF NOT EXISTS `schedule` (
+  `sid` int NOT NULL AUTO_INCREMENT,
   `m_start` char(5) NOT NULL,
   `m_end` char(5) NOT NULL,
   `e_start` char(5) NOT NULL,
   `e_end` char(5) NOT NULL,
   `doctor_id` int NOT NULL,
-  `date` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `date` date NOT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`m_start`, `m_end`, `e_start`, `e_end`, `doctor_id`, `date`) VALUES
-('10:00', '11:00', '4:00', '6:00', 0, '0000-00-00'),
-('10:00', '11:00', '4:00', '6:00', 1, '2023-10-13'),
-('08:00', '12:00', '03:00', '07:00', 1, '2023-10-18'),
-('08:00', '12:00', '4:00', '07:00', 1, '2023-10-19');
+INSERT INTO `schedule` (`sid`, `m_start`, `m_end`, `e_start`, `e_end`, `doctor_id`, `date`) VALUES
+(2, '10:00', '11:00', '4:00', '6:00', 1, '2023-10-13'),
+(3, '08:00', '12:00', '03:00', '07:00', 1, '2023-10-18'),
+(4, '08:00', '12:00', '4:00', '07:00', 1, '2023-10-19'),
+(5, '08:00', '11:00', '04:00', '07:00', 1, '2023-10-20'),
+(11, '8:00', '9:30', '4:00', '5:30', 1, '2023-10-21');
 
 -- --------------------------------------------------------
 

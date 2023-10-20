@@ -27,14 +27,29 @@ if(isset($_POST['submit']))
 {
     if($validator->validate($_POST))
     {
+      
+
+// Create a DateTime object using the original time string
+$date1 = new DateTime($_POST['m_start']);
+$date2 = new DateTime($_POST['m_end']);
+$date3 = new DateTime($_POST['e_start']);
+$date4 = new DateTime($_POST['e_end']);
+
+// Convert it into the 12-hour format using the `format` method
+$formatted_time1 = $date1->format('g:i A');
+$formatted_time2 = $date2->format('g:i A');
+$formatted_time3 = $date3->format('g:i A');
+$formatted_time4 = $date4->format('g:i A');
+
+
         // code for insertion 
 		
         $data=array(
 				'date'=>$_POST['date'],
-				'm_start'=>$_POST['m_start'],
-                'm_end'=>$_POST['m_end'],
-				'e_start'=>$_POST['e_start'],
-				'e_end'=>$_POST['e_end'],
+				'm_start'=>$formatted_time1,
+        'm_end'=>$formatted_time2,
+				'e_start'=>$formatted_time3,
+				'e_end'=>$formatted_time4,
 				'doctor_id'=>$_SESSION['doctor_id']
 			
 			);
