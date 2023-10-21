@@ -52,14 +52,14 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						<a class="sidebar-link" href="viewbooking.php">
+              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Bookings</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+						<a class="sidebar-link" href="idpass.php">
+              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Issue id and password</span>
             </a>
 					</li>
 
@@ -283,7 +283,7 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-				<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1></div>
+				<h1 class="h3 mb-3"><strong></strong> </h1></div>
 
 					<div class="row">
 						<div class="col-xl-6 col-xxl-5 d-flex">
