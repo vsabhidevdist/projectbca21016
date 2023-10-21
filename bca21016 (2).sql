@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 20, 2023 at 10:03 AM
+-- Generation Time: Oct 21, 2023 at 07:51 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `slot` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
@@ -90,7 +90,10 @@ INSERT INTO `booking` (`id`, `doctor_id`, `user_id`, `booked_datetime`, `appo_da
 (85, 1, 1, '2023-10-18 13:39:24', '2023-10-18', '08:00', 'consulted', 'm'),
 (86, 1, 1, '2023-10-18 13:42:49', '2023-10-18', '08:00', 'consulted', 'm'),
 (87, 1, 1, '2023-10-18 13:51:13', '2023-10-19', '08:00', 'confirm', 'm'),
-(88, 1, 1, '2023-10-20 14:42:30', '2023-10-20', '08:00', 'confirm', 'm');
+(88, 1, 1, '2023-10-20 14:42:30', '2023-10-20', '08:00', 'confirm', 'm'),
+(89, 1, 1, '2023-10-21 11:13:05', '2023-10-21', '08:00', 'confirm', 'm'),
+(90, 1, 1, '2023-10-21 11:47:20', '2023-10-21', '08:15', 'confirm', 'm'),
+(91, 1, 1, '2023-10-21 12:45:40', '2023-10-21', '04:00', 'paymentpending', 'e');
 
 -- --------------------------------------------------------
 
@@ -169,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `doctor`
@@ -177,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 
 INSERT INTO `doctor` (`id`, `name`, `gender`, `department`, `qualification`, `address`, `image`, `phone`, `age`, `description`, `fee`, `username`, `password`) VALUES
 (1, 'Dr Jacob Thomas E', 'se', '1', 'MBBS,Diploma & PG Diploma: D.C.H., Diploma in Newborn care, PG Diploma in Child Health', 'Ernakulam Kerala', 'e541f62abc7068517bb62d928a89cd5a_432df691efbe.jpg', '1234567812', 56, 'Has 8 years of Experience post MD, with training in Paediatric Gastroenterology, Hepatology and Nutr', 300, 'jacob', '12345678'),
-(2, 'demo dfgdgdhdhdh', 'se', '1', 'MBBS,PG: M.D. Pediatrics, Master of Surgery in Pediatrics.', 'TEST', 'doctors-1.jpg', '9400673512', 23, '', 0, '', '');
+(5, 'demo dfgdgdhdhdh', 'se', '1', 'MBBS,PG: M.D. Pediatrics, Master of Surgery in Pediatrics.', 'TEST', 'doctors-1.jpg', '9400673512', 23, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `amount` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `booking_id` (`booking_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payment`
@@ -287,7 +290,9 @@ INSERT INTO `payment` (`id`, `booking_id`, `amount`) VALUES
 (21, 85, 300),
 (22, 86, 300),
 (23, 87, 300),
-(24, 88, 300);
+(24, 88, 300),
+(25, 89, 300),
+(26, 90, 300);
 
 -- --------------------------------------------------------
 
