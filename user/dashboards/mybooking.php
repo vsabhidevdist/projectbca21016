@@ -16,7 +16,7 @@ $bookstat1=$dao->getDataJoin($fields5,'booking','user_id='.$a.' LIMIT 1');
     }
     else{
         $fields2=array('id','doctor_id','booked_datetime','appo_date','appo_time','slot','status');
-        $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 10');
+        $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 20');
         
     }
 
@@ -59,7 +59,24 @@ if(isset($_POST['paycancel']))
   
     if($booking['status']=='consulted' || $booking['status']=='cancelled'){
         $cancelbtn='disabled';
+
+        if($booking['status']=='consulted'){
+            $download="  <form method=POST><a href='temp.php?bid=$booking[id]'>
+        <button style='margin-right:500px;'
+                type=\"submit\"
+                class=\"btn btn-outline-primary btn-rounded btn-block fs-size-btn doc_book_btn py-2 doc_book_btn\"
+                
+                value='$booking[id]'
+             
+              
+               
+                >View Report</a></button></form> ";
+        }
+        else{
+            $download='';
+        }
     }
+    
     else{
         $cancelbtn='';
     }
@@ -198,7 +215,7 @@ echo "
             <div class=\"dp-timeleft\">
                 <h6 class=\"mb-1 heightline-2 fs13 ft-wight-1\"><span class=\"doc-weekdays\"></span><span
                         class=\"doc-timings\">$s</span></h6>
-            </div>
+            </div>$download
             <div class=\"dp-timeright text-end\"><input type=\"hidden\" id=\"doc_name_4948706\" value=\"Dr Abraham Paul\">
           
                     $paycancel
