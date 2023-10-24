@@ -48,6 +48,7 @@ if(isset($_POST['login']))
         {
            
             $_SESSION['user_id']=$info['id'];
+            $_SESSION['uname']=$info['name'];
 
 
 	echo "<script> alert('$a');</script> ";	

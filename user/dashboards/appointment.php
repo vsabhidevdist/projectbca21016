@@ -432,4 +432,4 @@ document.getElementById("sample-form").submit();
           </script>
           
 </body>
-    </html>
+<?php include('footer.php'); ?>

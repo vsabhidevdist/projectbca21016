@@ -80,3 +80,4 @@ include("header.php");
 
       </div>
     </section>
+    <?php include('footer.php'); ?>

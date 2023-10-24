@@ -26,7 +26,11 @@ if(isset($_POST['cancel']))
     $idd=$_POST['cancel'];
     header('Location: ./cancelappointment.php?bid='.$idd); 
 }
-
+if(isset($_POST['paycancel']))
+{
+    $idd=$_POST['paycancel'];
+    header('Location: ../payment/pendingpayment.php?bid='.$idd); 
+}
 
   
 
@@ -52,11 +56,12 @@ if(isset($_POST['cancel']))
 
 
    foreach($bookstat as $bookings=>$booking){
+  
     if($booking['status']=='consulted' || $booking['status']=='cancelled'){
-        $cancelbtn='';
+        $cancelbtn='disabled';
     }
     else{
-        $cancelbtn='disabled';
+        $cancelbtn='';
     }
         $bno=$booking['id'];
         $appodate=$booking['appo_date'];
@@ -77,19 +82,58 @@ if(isset($_POST['cancel']))
             case 'consulted':$s='Consulted';break;
         }
         $appotime=$booking['appo_time'];
-       if($booking['status']!='pendingpayment' ){
+        $nopaycancel=$dao->getDataJoin(array('id'),'payment','booking_id='.$booking['id'].' LIMIT 1');
+       if($booking['status']!='paymentpending' && !empty($nopaycancel)){
+        $paycancel="  <form method=POST>
+        <button
+                type=\"submit\"
+                class=\"btn btn-outline-primary btn-rounded btn-block fs-size-btn doc_book_btn py-2 doc_book_btn\"
+                name='cancel'
+                value='$booking[id]'
+             
+              
+               
+                $cancelbtn>Cancel Appointment</button></form> ";
         $fields3=array('id','amount');
         
         $rec=$dao->getDataJoin($fields3,'payment','booking_id='.$booking['id'].' LIMIT 1');
         
-        
-        $amt=$rec[0]['amount'];
+       
+
+            $amt=$rec[0]['amount']; 
             $rec_no=$rec[0]['id']; 
             $msg="receipt";
+           
+   
+       
 
-        }else{
+        }else if(empty($nopaycancel)){
             $rec_no=' -- ';
             $amt=' -- ';
+           $paycancel=" <form method=POST>
+            <button
+                    type=\"submit\"
+                    class=\"btn btn-outline-primary btn-rounded btn-block fs-size-btn doc_book_btn py-2 doc_book_btn\"
+                    name='paycancel'
+                    value='$booking[id]'
+                 
+                  
+                   
+                    $cancelbtn>Cancel Appointment</button></form> ";
+        }
+        else{
+            $rec_no=' -- ';
+            $amt=' -- ';
+           $paycancel=" <form method=POST>
+            <button
+                    type=\"submit\"
+                    class=\"btn btn-outline-primary btn-rounded btn-block fs-size-btn doc_book_btn py-2 doc_book_btn\"
+                    name='paycancel'
+                    value='$booking[id]'
+                 
+                  
+                   
+                    $cancelbtn>Pay/Cancel Appointment</button></form> ";
         }
        
     
@@ -156,16 +200,10 @@ echo "
                         class=\"doc-timings\">$s</span></h6>
             </div>
             <div class=\"dp-timeright text-end\"><input type=\"hidden\" id=\"doc_name_4948706\" value=\"Dr Abraham Paul\">
-            <form method=POST>
-            <button
-                    type=\"submit\"
-                    class=\"btn btn-outline-primary btn-rounded btn-block fs-size-btn doc_book_btn py-2 doc_book_btn\"
-                    name='cancel'
-                    value='$booking[id]'
-                 
-                  
-                   
-                    $cancelbtn>Cancel Appointment</button></form> </div>
+          
+                    $paycancel
+                    </div>
+                    
 
         </div>
     </div>
@@ -181,3 +219,4 @@ echo "
 
       </div>
     </section>
+    <?php include('footer.php'); ?>

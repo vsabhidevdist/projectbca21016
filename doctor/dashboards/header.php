@@ -30,6 +30,12 @@ if(isset($_SESSION['doctor_id'])){
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../assets/css/demo_1/style.css" />
+    <link rel="stylesheet" href="./assets/css/modalrecord.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+   
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
   </head>
@@ -114,7 +120,7 @@ if(isset($_SESSION['doctor_id'])){
             </div> -->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="record.php">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">View Records</span>
             </a>

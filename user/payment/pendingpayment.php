@@ -9,7 +9,7 @@ $dao=new DataAccess();
 
 
   $fields2=array('id','status','doctor_id','appo_date','appo_time','slot');
-  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
+  $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' and id='.$_GET['bid']);
   
 
     if($bookstat[0]['id']!=$_SESSION['booking_id']){
@@ -36,8 +36,8 @@ $dao=new DataAccess();
         $data=array(
             'status'=>'cancelled'
         );
-        if($dao->update($data,'booking','id='.$_SESSION['booking_id'])){
-            echo 'hi';
+        if($dao->update($data,'booking','id='.$_GET['bid'])){
+            echo "<script>location.replace('../dashboards/cancelconfirm.php')</script>";
         }
       }
       if(isset($_POST['pay'])){

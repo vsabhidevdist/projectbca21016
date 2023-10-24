@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 21, 2023 at 07:51 AM
+-- Generation Time: Oct 24, 2023 at 04:00 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `slot` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
@@ -89,11 +89,20 @@ INSERT INTO `booking` (`id`, `doctor_id`, `user_id`, `booked_datetime`, `appo_da
 (84, 1, 1, '2023-10-18 13:36:04', '2023-10-18', '11:30', 'consulted', 'm'),
 (85, 1, 1, '2023-10-18 13:39:24', '2023-10-18', '08:00', 'consulted', 'm'),
 (86, 1, 1, '2023-10-18 13:42:49', '2023-10-18', '08:00', 'consulted', 'm'),
-(87, 1, 1, '2023-10-18 13:51:13', '2023-10-19', '08:00', 'confirm', 'm'),
-(88, 1, 1, '2023-10-20 14:42:30', '2023-10-20', '08:00', 'confirm', 'm'),
-(89, 1, 1, '2023-10-21 11:13:05', '2023-10-21', '08:00', 'confirm', 'm'),
-(90, 1, 1, '2023-10-21 11:47:20', '2023-10-21', '08:15', 'confirm', 'm'),
-(91, 1, 1, '2023-10-21 12:45:40', '2023-10-21', '04:00', 'paymentpending', 'e');
+(87, 1, 1, '2023-10-18 13:51:13', '2023-10-19', '08:00', 'cancelled', 'm'),
+(88, 1, 1, '2023-10-20 14:42:30', '2023-10-20', '08:00', 'cancelled', 'm'),
+(89, 1, 1, '2023-10-21 11:13:05', '2023-10-21', '08:00', 'cancelled', 'm'),
+(90, 1, 1, '2023-10-21 11:47:20', '2023-10-21', '08:15', 'cancelled', 'm'),
+(92, 1, 1, '2023-10-22 18:00:41', '2023-10-22', '04:00', 'cancelled', 'e'),
+(93, 1, 1, '2023-10-22 19:48:20', '2023-10-22', '09:00', 'cancelled', 'm'),
+(94, 1, 1, '2023-10-22 20:06:08', '2023-10-22', '09:15', 'cancelled', 'm'),
+(95, 1, 1, '2023-10-22 20:09:20', '2023-10-22', '09:15', 'cancelled', 'm'),
+(96, 1, 1, '2023-10-24 01:39:45', '2023-10-24', '08:00', 'cancelled', 'm'),
+(97, 1, 1, '2023-10-24 14:33:24', '2023-10-24', '08:00', 'consulted', 'm'),
+(98, 1, 1, '2023-10-24 14:55:59', '2023-10-24', '08:00', 'consulted', 'm'),
+(99, 1, 1, '2023-10-24 15:04:46', '2023-10-24', '08:15', 'consulted', 'm'),
+(100, 1, 1, '2023-10-24 15:12:01', '2023-10-24', '08:00', 'confirm', 'm'),
+(101, 1, 1, '2023-10-24 15:15:55', '2023-10-24', '08:15', 'cancelled', 'm');
 
 -- --------------------------------------------------------
 
@@ -268,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `amount` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `booking_id` (`booking_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payment`
@@ -292,7 +301,15 @@ INSERT INTO `payment` (`id`, `booking_id`, `amount`) VALUES
 (23, 87, 300),
 (24, 88, 300),
 (25, 89, 300),
-(26, 90, 300);
+(26, 90, 300),
+(27, 92, 300),
+(28, 93, 300),
+(29, 96, 300),
+(30, 97, 300),
+(31, 98, 300),
+(32, 99, 300),
+(33, 100, 300),
+(34, 101, 300);
 
 -- --------------------------------------------------------
 
@@ -314,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `record` (
   `summary` varchar(300) NOT NULL,
   `p_t` varchar(300) NOT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `record`
@@ -325,7 +342,8 @@ INSERT INTO `record` (`rid`, `did`, `pid`, `m_h`, `m_a`, `r_mp`, `v_s`, `lab_res
 (2, 1, 1, 'sdsd', 'sdsd', 'sdsd', 'sd', 'sds', 83, 'sdsd', 'sdsd'),
 (4, 1, 1, 'NA', 'fd', 'fdd', 'fdf', 'fdf', 84, 'fd', 'fdf'),
 (5, 1, 1, 'g', 'gf', 'fg', 'fg', 'fg', 85, 'fg', 'fg'),
-(6, 1, 1, 'gfgf', 'fgf', 'gfg', 'fg', 'fgf', 86, 'gf', 'fgfg');
+(6, 1, 1, 'gfgf', 'fgf', 'gfg', 'fg', 'fgf', 86, 'gf', 'fgfg'),
+(9, 1, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 99, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu');
 
 -- --------------------------------------------------------
 
@@ -343,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `doctor_id` int NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedule`
@@ -354,7 +372,9 @@ INSERT INTO `schedule` (`sid`, `m_start`, `m_end`, `e_start`, `e_end`, `doctor_i
 (3, '08:00', '12:00', '03:00', '07:00', 1, '2023-10-18'),
 (4, '08:00', '12:00', '4:00', '07:00', 1, '2023-10-19'),
 (5, '08:00', '11:00', '04:00', '07:00', 1, '2023-10-20'),
-(11, '8:00', '9:30', '4:00', '5:30', 1, '2023-10-21');
+(11, '8:00', '9:30', '4:00', '5:30', 1, '2023-10-21'),
+(12, '9:00', '12:00', '4:00', '7:00', 1, '2023-10-22'),
+(13, '8:00', '10:00', '5:00', '8:00', 1, '2023-10-24');
 
 -- --------------------------------------------------------
 

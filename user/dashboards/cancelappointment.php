@@ -9,16 +9,13 @@ $dao=new DataAccess();
 
 
   $fields2=array('id','status','doctor_id','appo_date','appo_time','slot');
-  $bookstat=$dao->getDataJoin($fields2,'booking','id='.$_SESSION['user_id'].' LIMIT 1');
-  if($_GET['bid']!==$bookstat[0]['id'])
+  $bookstat=$dao->getDataJoin($fields2,'booking','id='.$_GET['bid'].' AND user_id='.$_SESSION['user_id']);
+  if(empty($bookstat))
+  header('Location: /projectbca21016/403.html'); 
 
-    if($bookstat[0]['id']!=$_SESSION['booking_id']){
-
-      header('Location: /projectbca21016/403.html'); 
-    }
  
     else{
-        $fields3=array('id','status','doctor_id','appo_date','appo_time','slot');
+        $fields3=array('id','name','fee');
         $doc=$dao->getDataJoin($fields3,'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
       $d =$bookstat[0]['appo_date'];
        $t=$bookstat[0]['appo_time'];
@@ -34,8 +31,8 @@ $dao=new DataAccess();
         $data=array(
             'status'=>'cancelled'
         );
-        if($dao->update($data,'booking','id='.$_SESSION['booking_id'])){
-            echo 'hi';
+        if($dao->update($data,'booking','id='.$_GET['bid'])){
+            echo "<script>location.replace('cancelconfirm.php')</script>";
         }
       }
    
@@ -285,6 +282,6 @@ input:focus:-ms-input-placeholder {
             </form>
         </div>
 
-        
+     
 </body>
 </html>

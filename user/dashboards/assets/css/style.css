@@ -1,7 +1,7 @@
 /**
-* Template Name: Medilab
+* Template Name: OneCare
 * Updated: Jul 27 2023 with Bootstrap v5.3.1
-* Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+* Template URL: https://bootstrapmade.com/OneCare-free-medical-bootstrap-theme/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
