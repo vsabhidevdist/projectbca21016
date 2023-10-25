@@ -56,7 +56,7 @@ if(isset($_POST['paycancel']))
 
 
    foreach($bookstat as $bookings=>$booking){
-  
+  $download='';
     if($booking['status']=='consulted' || $booking['status']=='cancelled'){
         $cancelbtn='disabled';
 

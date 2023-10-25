@@ -44,9 +44,9 @@ JOIN doctor D ON B.doctor_id = D.id
 JOIN record R ON B.id = R.bid where R.pid=".$pid." and B.status='consulted' ORDER BY R.rid DESC;");
 
 if($info2->num_rows==0){
-  echo "<script>alert('No records found');</script>";
-  sleep(1);
-  echo "<script>location.replace('record.php');</script>";
+  
+ 
+  
 }
 $info=array();
 while ($row = $info2->fetch_assoc()) {

@@ -10,12 +10,12 @@ if(isset($a)){
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
   
 
-   
+  if(!empty($bookstat)){
     if($bookstat[0]['status']=='paymentpending'){
 
       header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
     }
-  
+  }
 }
 include("header.php") ;
 function convertToTimeSlots($start, $end) {
@@ -54,9 +54,9 @@ $elements=array(
     }
 
     $d=array('date');
-    $dateavailable=$dao->getDataJoin($d,'schedule','doctor_id='.$_GET['id'].' LIMIT 7');
+    $dateavailable=$dao->getDataJoin($d,'schedule','doctor_id='.$_GET['id'].' and date>CURDATE() LIMIT 7');
     $times=array('m_start','m_end','e_start','e_end','date');
-    $timeslots=$dao->getDataJoin($times,'schedule','doctor_id='.$_GET['id'].' LIMIT 7');
+    $timeslots=$dao->getDataJoin($times,'schedule','doctor_id='.$_GET['id'].' and date>CURDATE() LIMIT 7');
     $bookedtimes=array('appo_date','appo_time','status','slot');
     $bookedslots=$dao->getDataJoin($bookedtimes,'booking','doctor_id='.$_GET['id'].' AND status="confirm"');
     

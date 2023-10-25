@@ -6,12 +6,12 @@ if(isset($_SESSION['user_id'])){
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' LIMIT 1');
   
 
-   
+  if(!empty($bookstat)){
     if($bookstat[0]['status']=='paymentpending'){
 
       header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
     }
-  
+  }
 }
 ?>
 <?php

@@ -12,6 +12,7 @@ $dao=new DataAccess();
     
     <div class="container_gray_bg" id="home_feat_1">
     <div class="container">
+        <h1>Bookings</h1>
     	<div class="row">
             <div class="col-md-12">
                 <table  border="1" class="table" style="width:60rem;margin-top:100px;">
@@ -22,6 +23,7 @@ $dao=new DataAccess();
                 
                         <th>Doctor Name</th>
                         <th>Booking Time</th>
+                        <th>Slot</th>
                         <th>Booking Date</th>
                        
                         <th>Phone</th>
@@ -33,30 +35,30 @@ $dao=new DataAccess();
 <?php
     
     $actions=array(
-    'edit'=>array('label'=>'Edit','link'=>'editdoctorimage.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success')),
+    'edit'=>array('label'=>'Edit','link'=>'editbooking.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success')),
     
-    'delete'=>array('label'=>'Delete','link'=>'deletedoctor.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success'))
+    'delete'=>array('label'=>'Delete','link'=>'deletebooking.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success'))
     
     );
 
     $config=array(
-        'srno'=>true,
-        'hiddenfields'=>array('b.id'),
+     
+       
      
        
     );
 
    
    $join=array(
-    'user'=>array('b.user_id=u.id','join'),
-    'doctor'=>array('b.doctor_id=d.id','join'),
+    'user u'=>array('b.user_id=u.id','join'),
+    'doctor d'=>array('b.doctor_id=d.id','join'),
 );
-     $fields=array('b.id','u.name','d.name','b.appo_time','b.appo_date','u.phone');
+     $fields=array('b.id','u.name as u_name','d.name as doctor_name','b.appo_time','b.slot','b.appo_date','u.phone');
 
-    // $users=$dao->selectAsTable($fields,'booking as b',1,$join,$actions,$config);
+    $users=$dao->selectAsTable($fields,'booking as b','b.id=b.id ORDER BY b.id DESC',$join,$actions,$config);
     
-    // echo $users;
-             $d=$dao->getData(array('b.*,d.*,u.*'),"booking b JOIN doctor d ON b.doctor_id = d.id JOIN user u ON b.user_id = u.id");   
+    echo $users;
+            //  $d=$dao->getData(array('b.*,d.*,u.*'),"booking b JOIN doctor d ON b.doctor_id = d.id JOIN user u ON b.user_id = u.id");   
                     
                    
     

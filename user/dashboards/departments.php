@@ -20,12 +20,13 @@ if(isset($_SESSION['user_id'])){
   
 
    
-
+if(!empty($bookstat)){
      if($bookstat[0]['status']=='paymentpending'){
        
        header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
       }
     }
+  }
     catch(UndefinedArrayKeyException $e){
       $k='fg';
       echo $e->getMessage();
