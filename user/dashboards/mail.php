@@ -29,8 +29,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';  // Your SMTP server
     $mail->SMTPAuth = true;
-    $mail->Username = 'theonecareofficial@gmail.com';
-    $mail->Password = 'umta eqsh ufwt ayar';
+    $mail->Username = $MAIL_ID;
+    $mail->Password = $MAIL_PASS;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
