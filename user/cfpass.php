@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Forgot Password</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
@@ -23,52 +23,6 @@
 
 ?>
 <?php
-$dao=new DataAccess();
-
-
-//if(isset($_SESSION['name']))
-   // header('location:student/index.php');
-
-
-
-$elements=array("email"=>"","password"=>"");
-$form=new FormAssist($elements,$_POST);
-$rules=array(
-    'email'=>array('required'=>true),
-    'password'=>array('required'=>true),
-);
-$validator=new FormValidator($rules);
-
-if(isset($_POST['login']))
-{
-    if($validator->validate($_POST))
-    {
-        $data=array('email'=>$_POST['email'],'password'=>$_POST['password']);
-        if($info=$dao->login($data,'user'))
-        {
-           
-            $_SESSION['user_id']=$info['id'];
-            $_SESSION['uname']=$info['name'];
-
-
-	echo "<script> alert('$a');</script> ";	
-		
-   echo"<script> location.replace('displaycategory.php'); </script>";
-			
-          header('location:/projectbca21016/user/dashboards/departments.php');
-       
-
-
- }
-        else{
-            $msg="invalid username or password";
-			
-				echo "<script> alert('Invalid username or password');</script> ";
-        }
-    }
-
-    
-}
 
 
 ?>
@@ -83,26 +37,28 @@ if(isset($_POST['login']))
                 <div class="brand-logo">
                   <img src="./assets/images/logo.jpg">
                 </div>
-                <h4>Hello! let's get started</h4>
-                <h6 class="font-weight-light">Sign in to continue.</h6>
+                <h4>Password Send Successfully</h4>
+                <h6 class="font-weight-light"></h6>
                 <form method="POST" class="pt-3">
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name='email' placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    <h7 style='text-align:center;'>Dear <?=$_GET['name']?>,
 
-                  </div>
-                  <div class="mt-3">
-                    <input type="submit" name='login' class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" value='Sign In' />
-                  </div>
+We have received your request password has been successfully send to <?= $_GET['id']?>.
+<br>
+If you did not request this password send or believe this was done in error, please contact our support team immediately at [support theonecareofficial@gmail.com]</h7>
+                
+              
+                  <div class="mt-3"><a href='login.php'>
+                    <input type="button" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" value='Back to Login' /></a>
+               
+                </div>
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
                         <input type="checkbox" class="form-check-input" checked> Keep me signed in </label>
 						
                     </div>
-                    <a href="fpass.php" class="auth-link text-black">Forgot password?</a>
+                   
                   </div>
                  
                   <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="registration.php" class="text-primary">Create</a>
