@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 25, 2023 at 04:25 PM
+-- Generation Time: Nov 01, 2023 at 04:36 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -364,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `doctor_id` int NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedule`
@@ -381,7 +381,8 @@ INSERT INTO `schedule` (`sid`, `m_start`, `m_end`, `e_start`, `e_end`, `doctor_i
 (14, '8:00', '11:00', '3:00', '6:00', 1, '2023-10-25'),
 (15, '8:00', '11:00', '3:00', '6:00', 1, '2023-10-25'),
 (16, '8:00', '10:30', '4:00', '7:00', 1, '2023-10-26'),
-(17, '8:00', '11:00', '4:00', '7:00', 1, '2023-10-27');
+(17, '8:00', '11:00', '4:00', '7:00', 1, '2023-10-27'),
+(18, '6:00', '8:00', '3:00', '6:00', 1, '2023-11-01');
 
 -- --------------------------------------------------------
 
@@ -424,7 +425,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -434,7 +435,10 @@ INSERT INTO `user` (`id`, `name`, `gender`, `age`, `email`, `phone`, `password`)
 (1, 'Abhishek', 'M', 45, 'abhi@gmail.com', '1234567891', '12345678'),
 (8, 'Ajith k s', 'M', 46, 'ajith12@gmail.com', '1234567891', '12345678'),
 (9, 'Ajith k s', 'M', 34, 'ajith123456@gmail.com', '1234567891', '12345678'),
-(10, 'Yaseen', 'F', 20, 'yasee@gmail.com', '2134567890', '12345678');
+(10, 'Yaseen', 'F', 20, 'yasee@gmail.com', '2134567890', '12345678'),
+(16, 'Jewel', 'M', 19, 'kjjewelkj@gmail.com', '1234567890', '97661'),
+(18, 'Aswin', 'M', 12, 'aswinrajeev@depaul.edu.in', '1234567890', '17486'),
+(19, 'Abhidev', 'M', 20, 'vsabhidev12@gmail.com', '1234567890', '12345678');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
