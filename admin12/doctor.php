@@ -5,7 +5,7 @@ include("header.php");
 
 $file=new FileUpload();
 $elements=array(
-        "name"=>"","gender"=>"","department"=>"","qualification"=>"","address"=>"","image"=>"","phone"=>"","age"=>"");
+        "name"=>"","gender"=>"","department"=>"","qualification"=>"","address"=>"","image"=>"","phone"=>"","dob"=>"","description"=>"","fee"=>"");
 
 
 $form=new FormAssist($elements,$_POST);
@@ -17,14 +17,16 @@ $dao=new DataAccess();
 $labels=array('name'=>"Department Name",'image'=>'Image');
 
 $rules=array(
-    "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
+    "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30),
     "gender"=>array("required"=>true,"minlength"=>1,"maxlength"=>2,"alphaonly"=>true),
     "department"=>array("required"=>true,"minlength"=>1,"maxlength"=>30,"integeronly"=>true),
-    "qualification"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
+    "qualification"=>array("required"=>true,"minlength"=>2,"maxlength"=>30),
     "address"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
     "image"=>array("filerequired"=>true),
     "phone"=>array("required"=>true,"minlength"=>10,"maxlength"=>10,"integeronly"=>true),
-    "age"=>array("required"=>true,"minlength"=>1,"maxlength"=>2,"integeronly"=>true),
+    "dob"=>array("required"=>true),
+    "description"=>array("required"=>true),
+    "fee"=>array("required"=>true,"integeronly"=>true),
 
      
 );
@@ -50,8 +52,10 @@ $data=array(
         "qualification"=>$_POST['qualification'],
         "address"=>$_POST['address'],
         "phone"=>$_POST['phone'],
-        "age"=>$_POST['age'],
+        "dob"=>$_POST['dob'],
         'image'=>$fileName,
+        'description'=>$_POST['description'],
+        'fee'=>$_POST['fee']
         
          
     );
@@ -116,10 +120,18 @@ Phone:
 
 <?= $form->textBox('phone',array('class'=>'form-control')); ?>
 <?= $validator->error('phone'); ?>
-Age:
+Date of Birth:
 
-<?= $form->textBox('age',array('class'=>'form-control')); ?>
-<?= $validator->error('age'); ?>
+<input type="date" name="dob" class="form-control">
+<?= $validator->error('dob'); ?>
+Description:
+
+<?= $form->textArea('description',array('class'=>'form-control')); ?>
+<?= $validator->error('description'); ?>
+Fee:
+
+<?= $form->textBox('fee',array('class'=>'form-control')); ?>
+<?= $validator->error('fee'); ?>
 </div>
 </div>
 
