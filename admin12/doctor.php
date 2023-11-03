@@ -14,7 +14,7 @@ $form=new FormAssist($elements,$_POST);
 
 $dao=new DataAccess();
 
-$labels=array('name'=>"Department Name",'image'=>'Image');
+$labels=array( "name"=>"Name","gender"=>"Gender","department"=>"Dept","qualification"=>"Qualification","address"=>"Address","image"=>"Image","phone"=>"Phone","dob"=>"DOB","description"=>"DESC","fee"=>"Fee");
 
 $rules=array(
     "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30),
@@ -67,13 +67,14 @@ $data=array(
         echo "<p style=color:green;>New doctor created successfully</p>";
 
     }
-    else echo "<p style=color:red;>ALREADY EXIST</p>";
+    echo "<p style=color:green;>Already exist</p>";
+}
 }
 }
 else
 echo $file->errors();
 
-}
+
 
 
 
