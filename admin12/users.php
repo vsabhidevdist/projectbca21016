@@ -22,7 +22,7 @@ $dao=new DataAccess();
                         <th>Name</th>
                 
                         <th>Gender</th>
-                        <th>Age</th>
+                        <th>DOB</th>
                         <th>Email</th>
                         <th>Phone</th>
                        
@@ -52,7 +52,7 @@ $dao=new DataAccess();
    $join=array(
    
 );
-     $fields=array('id','name','gender','Age','Email','phone','password');
+     $fields=array('id','name','gender','dob','email','phone','password');
 
     $users=$dao->selectAsTable($fields,'user',1,1,$actions,1);
     
