@@ -1,5 +1,15 @@
 <?php
-
+function calculateAge($dob) {
+  $today = new DateTime('now');
+  $birthDate = DateTime::createFromFormat('Y-m-d', $dob);
+  
+  if (!$birthDate) {
+      return "Invalid date format";
+  }
+  
+  $age = $today->diff($birthDate);
+  return $age->format('%y');
+}
 include('header.php');
 require('dbcon.php');
 
@@ -18,7 +28,7 @@ $pid=$booking[0]['user_id'];
 
 $info2=$mysqli->query("SELECT
 U.name AS user_name,
-U.age AS user_age,
+U.dob AS user_age,
 U.gender AS user_gender,
 U.email AS user_email,
 U.phone AS user_phone,
@@ -54,11 +64,11 @@ while ($row = $info2->fetch_assoc()) {
 }
 
 $timeslot=$booking[0]['appo_time'];
-$fields3=array('name','age','gender','email','phone');
+$fields3=array('name','dob','gender','email','phone');
 $info2=$dao->getDataJoin($fields3,'user','id='.$booking[0]['user_id']);
 
 $name=$info2[0]['name'];
-$age=$info2[0]['age'];
+$age=calculateAge($info2[0]['dob']);
 $g=$info2[0]['gender'];
 $em=$info2[0]['email'];
 $phone=$info2[0]['phone'];

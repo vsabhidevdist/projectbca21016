@@ -101,7 +101,7 @@ if(isset($_SESSION['doctor_id'])){
             </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="tmrbookings.php">
+          <a class="nav-link" href="tmrbooking.php">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Booking Tommorow</span>
             </a>

@@ -29,17 +29,17 @@
 require('../config/autoload.php'); 
 $dao=new DataAccess();
 $elements=array(
-        "name"=>"","gender"=>"","age"=>"","email"=>"","phone"=>"","password"=>"","cpassword"=>"");
+        "name"=>"","gender"=>"","dob"=>"","email"=>"","phone"=>"","password"=>"","cpassword"=>"");
 
 
 $form=new FormAssist($elements,$_POST);
 //$file=new FileUpload();
-$labels=array('name'=>"Name","gender"=>"Gender","age"=>"Age","email"=>"Email","phone"=>"Phone number","password"=>"Password","cpassword"=>"Confirm Password");
+$labels=array('name'=>"Name","gender"=>"Gender","dob"=>"DOB","email"=>"Email","phone"=>"Phone number","password"=>"Password","cpassword"=>"Confirm Password");
 
 $rules=array(
     "name"=>array("required"=>true,"minlength"=>3,"maxlength"=>30,"alphaspaceonly"=>true),
     "gender"=>array("required"=>true,"minlength"=>1,"maxlength"=>6,"alphaonly"=>true),
-    "age"=>array("required"=>true,"minlength"=>1,"maxlength"=>2,"integeronly"=>true),
+    "dob"=>array("required"=>true,"minlength"=>1,"maxlength"=>15),
     "email"=>array("required"=>true,"email"=>true,"unique"=>array("field"=>"email","table"=>"user")),
     
     "phone"=>array("required"=>true,"integeronly"=>true,"minlength"=>10,"maxlength"=>10),
@@ -60,7 +60,7 @@ if(isset($_POST['register']))
         $data=array(
 				'name'=>$_POST['name'],
 				'gender'=>$_POST['gender'],
-                'age'=>$_POST['age'],
+                'dob'=>$_POST['dob'],
 				'email'=>$_POST['email'],
 				'phone'=>$_POST['phone'],
 				'password'=>$_POST['password'],
@@ -115,8 +115,8 @@ echo "<script> alert('New zxx created successfully');</script> ";
                 <span class="valErr"><?= $validator->error('gender'); ?></span>
                   </div>
                   <div class="form-group">
-                    <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" name="age" placeholder="Age">
-                    <span class="valErr"><?= $validator->error('age'); ?></span>
+                    <input type="date" class="form-control form-control-lg" id="exampleInputEmail1" name="dob" placeholder="Date of Birth">
+                    <span class="valErr"><?= $validator->error('dob'); ?></span>
                   </div>
                   <div class="form-group">
                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name='email' placeholder="Email">

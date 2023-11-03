@@ -17,16 +17,16 @@ $dao=new DataAccess();
 $labels=array( "name"=>"Name","gender"=>"Gender","department"=>"Dept","qualification"=>"Qualification","address"=>"Address","image"=>"Image","phone"=>"Phone","dob"=>"DOB","description"=>"DESC","fee"=>"Fee");
 
 $rules=array(
-    "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30),
+    "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
     "gender"=>array("required"=>true,"minlength"=>1,"maxlength"=>2,"alphaonly"=>true),
     "department"=>array("required"=>true,"minlength"=>1,"maxlength"=>30,"integeronly"=>true),
-    "qualification"=>array("required"=>true,"minlength"=>2,"maxlength"=>30),
+    "qualification"=>array("required"=>true,"minlength"=>2,"maxlength"=>50),
     "address"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
     "image"=>array("filerequired"=>true),
     "phone"=>array("required"=>true,"minlength"=>10,"maxlength"=>10,"integeronly"=>true),
-    "dob"=>array("required"=>true),
-    "description"=>array("required"=>true),
-    "fee"=>array("required"=>true,"integeronly"=>true),
+    "dob"=>array("required"=>true,"minlength"=>1,"maxlength"=>15),
+    "description"=>array("required"=>true,"minlength"=>2,"maxlength"=>500),
+    "fee"=>array("required"=>true,"minlength"=>1,"maxlength"=>5,"integeronly"=>true),
 
      
 );
@@ -39,7 +39,7 @@ if(isset($_POST["insert"]))
 
 if($validator->validate($_POST))
 {
-	if($fileName=$file->doUploadRandom($_FILES['image'],array('.jpg','.png','.jpeg'),100000,1,'./doctorimage'))	
+	if($fileName=$file->doUploadRandom($_FILES['image'],array('.jpg','.png','.jpeg'),100000,1,'../doctorimage'))	
     {
 
 
@@ -67,7 +67,8 @@ $data=array(
         echo "<p style=color:green;>New doctor created successfully</p>";
 
     }
-    echo "<p style=color:green;>Already exist</p>";
+    else
+    echo "<p style=color:red;Insert failed</p>";
 }
 }
 }
@@ -136,7 +137,7 @@ Fee:
 </div>
 </div>
 
-<button type="submit" name="insert">Submit</button>
+<button type="submit" name="insert"  value="sub">Submit</button>
 </form>
 
 

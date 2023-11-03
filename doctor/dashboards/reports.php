@@ -2,11 +2,21 @@
 
 include('header.php');
 require('dbcon.php');
-
+function calculateAge($dob) {
+  $today = new DateTime('now');
+  $birthDate = DateTime::createFromFormat('Y-m-d', $dob);
+  
+  if (!$birthDate) {
+      return "Invalid date format";
+  }
+  
+  $age = $today->diff($birthDate);
+  return $age->format('%y');
+}
 $a=$_GET['uid'];
 $info2=$mysqli->query("SELECT
 U.name AS user_name,
-U.age AS user_age,
+U.dob AS user_age,
 U.gender AS user_gender,
 U.email AS user_email,
 U.phone AS user_phone,
@@ -44,7 +54,8 @@ while ($row = $info2->fetch_assoc()) {
 // $info2=$dao->getDataJoin($fields3,'user','id='.$a);
 // print_r($info);
 $name=$info[0]['user_name'];
-$age=$info[0]['user_age'];
+$age=calculateAge($info[0]['user_age']);
+
 $g=$info[0]['user_gender'];
 $em=$info[0]['user_email'];
 $phone=$info[0]['user_phone'];

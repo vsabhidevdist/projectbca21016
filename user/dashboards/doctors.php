@@ -54,9 +54,13 @@ include("header.php");
       $dept=$departmentname['name'];
       $q=$row['qualification'];
       $id=$row['id'];
+      //<div class=pic><img src=/projectbca21016/doctorimage/$img class=img-fluid alt=></div>
        echo "<div class=col-lg-6 mt-4 mt-lg-0>
        <div class=member d-flex align-items-start>
-         <div class=pic><img src=/projectbca21016/doctorimage/$img class=img-fluid alt=></div>
+         
+         <div style=\"width: 200px; height: 200px; overflow: hidden; border-radius: 50%;\">
+         <img src=\"/projectbca21016/doctorimage/$img\" class=\"img-fluid\" style=\"object-fit: cover; width: 100%; height: 100%;\" alt=\"\">
+       </div>
          <div class=member-info>
            <h4>$name</h4>
            <span>$dept</span>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 02, 2023 at 10:48 AM
+-- Generation Time: Nov 03, 2023 at 07:58 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `slot` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `booking`
@@ -75,7 +75,8 @@ INSERT INTO `booking` (`id`, `doctor_id`, `user_id`, `booked_datetime`, `appo_da
 (102, 1, 10, '2023-10-25 21:44:24', '2023-10-26', '08:00', 'cancelled', 'm'),
 (103, 1, 10, '2023-10-25 21:47:55', '2023-10-26', '08:00', 'consulted', 'm'),
 (104, 1, 1, '2023-11-02 13:55:07', '2023-11-02', '08:00', 'confirm', 'm'),
-(105, 1, 1, '2023-11-02 14:43:29', '2023-11-02', '08:15', 'confirm', 'm');
+(105, 1, 1, '2023-11-02 14:43:29', '2023-11-02', '08:15', 'cancelled', 'm'),
+(106, 1, 1, '2023-11-04 01:20:39', '2023-11-04', '08:00', 'consulted', 'm');
 
 -- --------------------------------------------------------
 
@@ -124,12 +125,12 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `image` varchar(200) NOT NULL,
   `phone` char(10) NOT NULL,
   `dob` date NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `fee` int NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `doctor`
@@ -137,7 +138,16 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 
 INSERT INTO `doctor` (`id`, `name`, `gender`, `department`, `qualification`, `address`, `image`, `phone`, `dob`, `description`, `fee`, `username`, `password`) VALUES
 (1, 'Dr Jacob Thomas E', 'se', '1', 'MBBS,Diploma & PG Diploma: D.C.H., Diploma in Newborn care, PG Diploma in Child Health', 'Ernakulam Kerala', 'e541f62abc7068517bb62d928a89cd5a_432df691efbe.jpg', '1234567812', '1984-11-08', 'Has 8 years of Experience post MD, with training in Paediatric Gastroenterology, Hepatology and Nutr', 300, 'jacob', '12345678'),
-(5, 'demo dfgdgdhdhdh', 'se', '1', 'MBBS,PG: M.D. Pediatrics, Master of Surgery in Pediatrics.', 'TEST', 'doctors-1.jpg', '9400673512', '1993-11-24', '', 0, '', '');
+(5, 'demo dfgdgdhdhdh', 'se', '1', 'MBBS,PG: M.D. Pediatrics, Master of Surgery in Pediatrics.', 'TEST', 'doctors-1.jpg', '9400673512', '1993-11-24', '', 0, '', ''),
+(6, 'Dr Deepak Choudhary', 'M', '6', 'DM, Neurology', 'ekm', '83ab9bc7795b67e5d94ca45c915bf476_637376c1e8bd8b68027.jpg', '1234567890', '1999-10-10', ' Dr. Deepak Choudhary is a highly respected neurologist known for his clinical expertise and researc', 300, 'deepak', '12345678'),
+(7, 'Dr Priya Patel', 'F', '1', 'MD Pediatric Medicine', 'Ekm', 'ed28cd69cebf12a350f74cd9ee6aea4c_42d06ae30a704213f76.jpg', '1234567890', '1996-10-10', 'Dr. Priya Patel is a dedicated pediatrician with more than 15 years of experience in caring for the ', 300, '', ''),
+(8, 'Dr Rajesh Verma', 'M', '2', 'MD Gastroenterology', 'ekm', 'cd232ac222a0a7a59eee68c018236229_c0e57f32a3f32e21825.jpg', '1234567890', '1965-10-10', 'Dr. Rajesh Verma is a highly skilled gastroenterologist with over 20 years of experience in diagnosi', 500, '', ''),
+(9, 'Dr Ananya Singh', 'F', '3', 'MD Anesthesiology', 'ekm', 'adb358bf102db23d8a956a2c7dd0018c_a61d62ec8e9d0a32.jpg', '1234567890', '1895-12-09', 'Dr. Ananya Singh is a board-certified anesthesiologist known for her precision and expertise in admi', 500, '', ''),
+(10, 'Dr Aditya Sharma', 'M', '4', 'MD Cardiology', 'ekm', '936dad63b96b70df17064fe0055893ed_e804cd6dedf1bb8b93e.jpg', '1234567890', '1990-09-15', ' Dr. Aditya Sharma is a renowned cardiologist with more than 25 years of experience in the diagnosis', 200, '', ''),
+(11, 'Dr Nandini Iye', 'F', '5', 'MS Otorhinolaryngology (ENT)', 'ekm', '75153e8ba73a3707f25d09bf08a8f37b_5bd729544bff39661a.jpg', '1234567890', '1980-10-10', 'Dr. Nandini Iyer is a skilled ENT specialist with extensive experience in treating ear, nose, and th', 200, '', ''),
+(12, 'Dr Arjun Khanna', 'M', '6', 'MD Neurology', 'ekm', 'fd2db27a77b5d5c2cfdb83a017425713_b41407aa20c57c958357.jpg', '1234567890', '1970-05-04', ' Dr. Arjun Khanna is a dedicated neurologist with a strong commitment to diagnosing and treating neu', 200, '', ''),
+(13, 'Dr Aparna Gupta', 'F', '7', 'MS Orthopedics', 'ekm', '4b233cdb0a14ebf0170a7bf28ca55c8d_af80417d079f36f559d2.jpg', '1234567890', '1985-01-05', 'Dr. Aparna Gupta is an experienced orthopedic surgeon specializing in musculoskeletal health. With 1', 200, '', ''),
+(14, 'Dr Sanjay Joshi', 'M', '8', 'MD, Psychiatry', 'ekm', '990d191bca22ae057e62d0816aa6c414_1b4bdc3304ad.jpg', '1234567890', '1989-10-10', 'Dr. Sanjay Joshi is a compassionate psychiatrist with over 20 years of experience in helping patient', 200, '', '');
 
 -- --------------------------------------------------------
 
@@ -152,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `amount` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `booking_id` (`booking_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payment`
@@ -188,7 +198,8 @@ INSERT INTO `payment` (`id`, `booking_id`, `amount`) VALUES
 (35, 102, 300),
 (36, 103, 300),
 (37, 104, 300),
-(38, 105, 300);
+(38, 105, 300),
+(39, 106, 300);
 
 -- --------------------------------------------------------
 
@@ -210,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `record` (
   `summary` varchar(300) NOT NULL,
   `p_t` varchar(300) NOT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `record`
@@ -223,7 +234,8 @@ INSERT INTO `record` (`rid`, `did`, `pid`, `m_h`, `m_a`, `r_mp`, `v_s`, `lab_res
 (5, 1, 1, 'g', 'gf', 'fg', 'fg', 'fg', 85, 'fg', 'fg'),
 (6, 1, 1, 'gfgf', 'fgf', 'gfg', 'fg', 'fgf', 86, 'gf', 'fgfg'),
 (10, 1, 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 103, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu'),
-(9, 1, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 99, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu');
+(9, 1, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', 99, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu'),
+(11, 1, 1, 'gdgdg', 'gdg', 'fgfg', 'gfg', 'gfg', 106, 'gfg', 'dgdg');
 
 -- --------------------------------------------------------
 
@@ -241,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `doctor_id` int NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedule`
@@ -261,7 +273,8 @@ INSERT INTO `schedule` (`sid`, `m_start`, `m_end`, `e_start`, `e_end`, `doctor_i
 (17, '8:00', '11:00', '4:00', '7:00', 1, '2023-10-27'),
 (18, '6:00', '8:00', '3:00', '6:00', 1, '2023-11-01'),
 (19, '8:00', '12:00', '3:00', '6:00', 1, '2023-11-02'),
-(20, '8:00', '9:00', '3:00', '4:00', 1, '2023-11-03');
+(20, '8:00', '9:00', '3:00', '4:00', 1, '2023-11-03'),
+(21, '8:00', '10:00', '4:00', '7:00', 1, '2023-11-04');
 
 -- --------------------------------------------------------
 
@@ -274,26 +287,27 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `gender` varchar(6) NOT NULL,
-  `age` int NOT NULL,
+  `dob` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` char(10) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `email`, `phone`, `password`) VALUES
-(1, 'Abhishek', 'M', 45, 'abhi@gmail.com', '1234567891', '12345678'),
-(8, 'Ajith k s', 'M', 46, 'ajith12@gmail.com', '1234567891', '12345678'),
-(9, 'Ajith k s', 'M', 34, 'ajith123456@gmail.com', '1234567891', '12345678'),
-(10, 'Yaseen', 'F', 20, 'yasee@gmail.com', '2134567890', '12345678'),
-(16, 'Jewel', 'M', 19, 'kjjewelkj@gmail.com', '1234567890', '97661'),
-(18, 'Aswin', 'M', 12, 'aswinrajeev@depaul.edu.in', '1234567890', '17486'),
-(19, 'Abhidev', 'M', 20, 'vsabhidev12@gmail.com', '1234567890', '12345678');
+INSERT INTO `user` (`id`, `name`, `gender`, `dob`, `email`, `phone`, `password`) VALUES
+(1, 'Abhishek', 'M', '2013-11-06', 'abhi@gmail.com', '1234567891', '12345678'),
+(8, 'Ajith k s', 'M', '2004-11-10', 'ajith12@gmail.com', '1234567891', '12345678'),
+(9, 'Ajith k s', 'M', '2005-11-16', 'ajith123456@gmail.com', '1234567891', '12345678'),
+(10, 'Yaseen', 'F', '1996-11-06', 'yasee@gmail.com', '2134567890', '12345678'),
+(16, 'Jewel', 'M', '2003-11-12', 'kjjewelkj@gmail.com', '1234567890', '97661'),
+(18, 'Aswin', 'M', '2015-11-11', 'aswinrajeev@depaul.edu.in', '1234567890', '17486'),
+(19, 'Abhidev', 'M', '2003-11-27', 'vsabhidev12@gmail.com', '1234567890', '12345678'),
+(20, 'Abhidev V S', 'M', '2000-10-17', 'vsabhidev@depaul.edu.in', '1234567890', '12345678');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

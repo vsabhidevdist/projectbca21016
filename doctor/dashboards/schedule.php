@@ -55,7 +55,7 @@ $formatted_time4 = $date4->format('g:i A');
 			);
 			if($dao->insert($data,'schedule'))
 			{
-				"<script> alert('Scheduled successfully');</script> ";
+				echo "<script> alert('Scheduled successfully');</script> ";
 			}
 			else
 				$msg="insertion failed";
