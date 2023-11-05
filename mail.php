@@ -1,8 +1,10 @@
 <?php
+require('config/autoload.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+$mailid=$MAIL_ID;
+$mailpass=$MAIL_PASS;
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 require 'phpmailer/src/Exception.php';
@@ -13,8 +15,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';  // Your SMTP server
     $mail->SMTPAuth = true;
-    $mail->Username = 'theonecareofficial@gmail.com';
-    $mail->Password = 'umta eqsh ufwt ayar';
+    $mail->Username = $mailid;
+    $mail->Password = $mailpass;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 

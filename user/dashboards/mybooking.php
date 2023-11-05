@@ -9,15 +9,17 @@ if(!isset($a)){
 }
 $fields5=array('id','status');
 $bookstat1=$dao->getDataJoin($fields5,'booking','user_id='.$a.' LIMIT 1');
-   
-    if($bookstat1[0]['status']=='paymentpending'){
+  if(!empty($bookstat1)) {
 
-      header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
-    }
-    else{
-        $fields2=array('id','doctor_id','booked_datetime','appo_date','appo_time','slot','status');
-        $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 20');
-        
+      if($bookstat1[0]['status']=='paymentpending'){
+          
+          header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+        }
+        else{
+            $fields2=array('id','doctor_id','booked_datetime','appo_date','appo_time','slot','status');
+            $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' ORDER BY id DESC LIMIT 20');
+            
+        }
     }
 
   
@@ -54,7 +56,7 @@ if(isset($_POST['paycancel']))
     
    
 
-
+if(!empty($bookstat))
    foreach($bookstat as $bookings=>$booking){
   $download='';
     if($booking['status']=='consulted' || $booking['status']=='cancelled'){
@@ -229,6 +231,7 @@ echo "
 
 
   }
+  else echo "<span style=text-align:center;font-size:25px;>No Bookings Found</span>";
   ?>
 
 

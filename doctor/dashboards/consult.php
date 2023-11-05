@@ -47,7 +47,8 @@ R.v_s,
 R.lab_results,
 R.bid,
 R.summary,
-R.p_t
+R.p_t,
+R.nextc
 FROM booking B
 JOIN user U ON B.user_id = U.id
 JOIN doctor D ON B.doctor_id = D.id
@@ -75,7 +76,7 @@ $phone=$info2[0]['phone'];
 
 
 $elements=array(
-    "did"=>"","pid"=>"","m_h"=>"","m_a"=>"","r_mp"=>"","v_s"=>"","lab_results"=>"","bid"=>"","summary"=>"","p_t"=>"");
+    "did"=>"","pid"=>"","m_h"=>"","m_a"=>"","r_mp"=>"","v_s"=>"","lab_results"=>"","bid"=>"","summary"=>"","p_t"=>"","nextc"=>"");
 
 
 $form=new FormAssist($elements,$_POST);
@@ -84,7 +85,7 @@ $form=new FormAssist($elements,$_POST);
 
 
 
-$labels=array("did"=>"Doctor id","pid"=>"Patient id","m_h"=>"Medical History","m_a"=>"Medication and allergies","r_mp"=>"recent medical treatment","v_s"=>"vital signs","lab_results"=>"Lab results","bid"=>"booking id","summary"=>"Summary","p_t"=>"Prescription and treatment");
+$labels=array("did"=>"Doctor id","pid"=>"Patient id","m_h"=>"Medical History","m_a"=>"Medication and allergies","r_mp"=>"recent medical treatment","v_s"=>"vital signs","lab_results"=>"Lab results","bid"=>"booking id","summary"=>"Summary","p_t"=>"Prescription and treatment","nextc"=>"Follow up date");
 
 $rules=array(
 "did"=>array("required"=>true),
@@ -97,6 +98,7 @@ $rules=array(
 "bid"=>array("required"=>true),
 "summary"=>array("required"=>true),
 "p_t"=>array("required"=>true),
+"nextc"=>array("required"=>false),
 
  
 );
@@ -126,6 +128,7 @@ $data=array(
     "bid"=>$_POST['bid'],
     "summary"=>$_POST['summary'],
     "p_t"=>$_POST['p_t'],
+    "nextc"=>$_POST['nextc'],
      
 );
 
@@ -209,11 +212,14 @@ foreach($info as $key=>$book){
   $dt=$book['appo_date'];
   $rid=$book['rid'];
   $dname=$book['doctor_name'];
+  if(!empty($book['nextc']))
+  $nextc=$book['nextc'];
+  else $nextc="Nill";
  
   
   echo "
   <div class=\"accordion-item\">
-  <div class=\"accordion-header\"><b>RID: $rid Report On $dt - Booking ID: $bookingid       Consulted - $dname</b></div>
+  <div class=\"accordion-header\"><b>RID: $rid Report On $dt - Booking ID: $bookingid       Consulted - $dname , Follow-up Date: $nextc</b></div>
   <div class=\"accordion-content\">
   <b>Medical History:</b><br>$book[m_h]<br>
   <b>Medication and allergies:</b><br>$book[m_a]<br>
@@ -265,7 +271,7 @@ foreach($info as $key=>$book){
            <div class='row'>
          
            <div class="form-group">
-                        <label for="exampleTextarea1">Medical History</label>
+                        <label for="exampleTextarea1">Medical History  *</label>
                         <textarea class="form-control" name='m_h' id="exampleTextarea1" rows="4"></textarea>
                       </div>
                       <div class="form-group">
@@ -273,24 +279,28 @@ foreach($info as $key=>$book){
                         <textarea class="form-control" name='p_t' id="exampleTextarea1" rows="7"></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Medications and Allergies:</label>
+                        <label for="exampleTextarea1">Medications and Allergies: *</label>
                         <textarea class="form-control" name='m_a' id="exampleTextarea1" ></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Recent Medical Procedures:</label>
+                        <label for="exampleTextarea1">Recent Medical Procedures: *</label>
                         <textarea class="form-control" name='r_mp' id="exampleTextarea1" ></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Vital Signs:</label>
+                        <label for="exampleTextarea1">Vital Signs: *</label>
                         <textarea class="form-control" name='v_s' id="exampleTextarea1" ></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Laboratory and Test Results:</label>
+                        <label for="exampleTextarea1">Laboratory and Test Results:  *</label>
                         <textarea class="form-control" name='lab_results' id="exampleTextarea1" ></textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Summary: *</label>
                         <textarea class="form-control" name='summary' id="exampleTextarea1" rows="5"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Follow Up Date: *</label>
+                        <input type="date" class="form-control" name='nextc' >
                       </div>
                       <button type="submit" class="btn btn-primary me-2" name='insert' value='submit'> Submit Record</button>
                     </form>

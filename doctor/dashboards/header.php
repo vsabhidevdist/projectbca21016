@@ -155,7 +155,7 @@ if(isset($_SESSION['doctor_id'])){
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_settings-panel.html -->
-        <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
+        <!-- <div id="settings-trigger"><i class="mdi mdi-settings"></i></div> -->
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close mdi mdi-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>

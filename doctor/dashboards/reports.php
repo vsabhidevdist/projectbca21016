@@ -35,7 +35,8 @@ R.v_s,
 R.lab_results,
 R.bid,
 R.summary,
-R.p_t
+R.p_t,
+R.nextc
 FROM booking B
 JOIN user U ON B.user_id = U.id
 JOIN doctor D ON B.doctor_id = D.id
@@ -107,11 +108,13 @@ foreach($info as $key=>$book){
   $dt=$book['appo_date'];
   $rid=$book['rid'];
   $dname=$book['doctor_name'];
- 
+  if(!empty($book['nextc']))
+  $nextc=$book['nextc'];
+  else $nextc="Nill";
   
   echo "
   <div class=\"accordion-item\">
-  <div class=\"accordion-header\"><b>RID: $rid Report On $dt - Booking ID: $bid       Consulted - $dname</b></div>
+  <div class=\"accordion-header\"><b>RID: $rid Report On $dt - Booking ID: $bid       Consulted - $dname, Follow-up Date: $nextc</b></div>
   <div class=\"accordion-content\">
   <b>Medical History:</b><br>$book[m_h]<br>
   <b>Medication and allergies:</b><br>$book[m_a]<br>
