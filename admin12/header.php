@@ -286,7 +286,8 @@
 				<h1 class="h3 mb-3"><strong></strong> </h1></div>
 
 					<div class="row">
-						<div class="col-xl-6 col-xxl-5 d-flex">
+	<!-- col-xl-6 col-xxl-5 -->
+					<div class=" d-flex">
 							<div class="w-100">
 								
 							<script src="js/app.js"></script>
