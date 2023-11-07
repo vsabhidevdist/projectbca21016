@@ -36,7 +36,7 @@ $dao=new DataAccess();
 
 
 
-
+    $info=$dao->getDataJoin(array('fee'),'doctor','id='.$bookstat[0]['doctor_id'].' LIMIT 1');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,7 +124,7 @@ return false;
 
           <div class="radio-input">
             <input id="card" type="radio" name="payment">
-            Pay Rs <?php echo $_SESSION['booking_id']; ?> with credit card
+            Pay Rs <?php echo $info[0]['fee']; ?> with credit card
           </div>
         </label>
 
@@ -132,7 +132,7 @@ return false;
           <img src="img/paypal_logo.png"/>
           <div class="radio-input">
             <input id="paypal" type="radio" name="payment">
-            Pay Rs <?php echo $_SESSION['booking_id']; ?> with PayPal
+            Pay Rs <?php echo $info[0]['fee']; ?> with PayPal
           </div>
         </label>
       </div>

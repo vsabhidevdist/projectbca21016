@@ -12,7 +12,7 @@ $mail = new PHPMailer(true);
 
 require('../../config/autoload.php');
 require('../../doctor/dashboards/dbcon.php');
-$a=$_SESSION['user_id'];
+
 $bid=$_GET['bid'];
 $data=$mysqli->query('SELECT
 U.name AS user_name,
@@ -30,7 +30,7 @@ JOIN user U ON B.user_id = U.id
 JOIN doctor D ON B.doctor_id = D.id
 JOIN record R ON B.id = R.bid
 JOIN payment P ON B.id = P.booking_id
- where B.id='.$bid.' and B.user_id='.$a.';');
+ where B.id='.$bid.';');
 while ($row = $data->fetch_assoc()) {
     $info[]=$row;
   }

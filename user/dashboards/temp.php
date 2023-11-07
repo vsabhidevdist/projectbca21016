@@ -57,6 +57,134 @@ $amt="Rs.".$info[0]['amount']."/-";
 <!-- Created by pdf2htmlEX (https://github.com/pdf2htmlEX/pdf2htmlEX) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+
+
+
+
+
+  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        >
+        <style>
+:root {
+    --notification-background: #000000;
+    --notification-primary: #000000;
+    --background: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+}
+
+.notification {
+    position: absolute;
+    width: max-content;
+    left: 0; 
+    right: 0; 
+    bottom: 24px;
+    margin-left: auto; 
+    margin-right: auto; 
+    border-radius: 6px;
+    background-color: var(
+        --notification-background);
+    color: var(--notification-primary);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(30px);
+    opacity: 0;
+    visibility: hidden;
+    animation: fade-in 3s linear;
+    
+}
+
+.notification__icon {
+    height: 26px;
+    width: 26px;
+    margin-right: 4px;
+}
+
+.notification__body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;
+    height:80vh;
+    padding: 16px 8px;
+    font-size: 5vh;
+}
+
+.notification__progress {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: calc(100% - 8px);
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(
+        to right, 
+        var(--notification-background),  
+        var(--notification-primary)
+    );
+    border-radius: inherit;
+    animation: progress 2.5s 0.3s linear;
+}
+
+@keyframes fade-in {
+    5% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progress {
+    to {
+        transform: scaleX(1);
+    }
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensure it's on top of other elements */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+#loadingIndicator {
+    font-size: 18px;
+    color: #fff;
+    padding: 20px;
+}
+            </style>
+    
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 <meta charset="utf-8"/>
@@ -460,7 +588,13 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 <title></title>
 </head>
 <body >
-
+<div class="notification overlay" id="fetchDiv" style="display: none;">
+            <div class="notification__body">
+              
+                Your Report has been sent to your email! &#128640; 
+            </div>
+            <div class="notification__progress"></div>
+        </div>
 <div id="sidebar">
 <div id="outline">
 </div>
@@ -506,27 +640,38 @@ html2=new html2pdf();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
 <script>
 window.onload = function () {
+    fetch('mail.php?bid=<?=$bid?>', {
+        method: 'get',
+        // may be some code of fetching comes here
+    
     // This code will run when the page has fully loaded
 
-    // Attach a click event listener to the "Generate PDF" button
-    document.getElementById('generatePdf').addEventListener('click', function () {
-        // Capture the entire web page
-        html2pdf()
-            .from(document.body)
-            .set({
-                margin: 10,
-                filename: 'captured_page.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            })
-            .outputPdf()
-            .then(function (pdf) {
-                // Send the generated PDF to the server
-                sendPdfToServer(pdf);
-            });
-    });
-
+    // // Attach a click event listener to the "Generate PDF" button
+    // document.getElementById('generatePdf').addEventListener('click', function () {
+    //     // Capture the entire web page
+    //     html2pdf()
+    //         .from(document.body)
+    //         .set({
+    //             margin: 10,
+    //             filename: 'captured_page.pdf',
+    //             image: { type: 'jpeg', quality: 0.98 },
+    //             html2canvas: { scale: 2 },
+    //             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    //         })
+    //         .outputPdf()
+    //         .then(function (pdf) {
+    //             // Send the generated PDF to the server
+    //             sendPdfToServer(pdf);
+    //         });
+    }).then(response => {
+        // Assuming mail.php doesn't return any specific data, you can simply check the response status
+        if (response.ok) {
+            // If the response status is OK (e.g., 200), display the div
+            document.getElementById('fetchDiv').style.display = 'block';
+        } else {
+            // Handle the case where the fetch was not successful
+            console.error('Fetch failed with status: ' + response.status);
+        }});
     function sendPdfToServer(pdf) {
         // Convert the PDF to a data URL
         var pdfDataUrl = pdf.output('datauristring');

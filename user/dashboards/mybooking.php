@@ -178,12 +178,9 @@ echo "
     <div class=\"card-body p-lg-4 p-3 text-black \">
      
         <div class=\"d-flex mb-3\">
-            <div class=\"flex-shrink-0 pe-2 pe-lg-4\"><a
-                    ><img
-                        src=\"../../doctorimage/$img\"
-                        alt=\"$name\"
-                        class=\"shadow docpic img-fluid rounded-circle border border-light border-3\" loading=\"lazy\" width=180px></a>
-            </div>
+        <div style=\"width: 200px; height: 200px; overflow: hidden; border-radius: 50%;\">
+        <img src=\"/projectbca21016/doctorimage/$img\" class=\"img-fluid\" style=\"object-fit: cover; width: 100%; height: 100%;\" alt=\"\">
+      </div>
             <div class=\"flex-grow-1 ms-lg-4 ms-2\">
                 <div ><a class=\"docrcardtitle\"
                         >

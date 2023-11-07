@@ -143,7 +143,8 @@ if($dao->insert($data,"record"))
       );
       if($dao->update($sdata,'booking','id='.$bid)){
         echo "<script>alert('Record submitted successfully!');</script>";
-          echo "<script>location.replace('bookings.php')</script>";
+        echo "<script>location.replace('mail.php?bid=$bid');</script>";
+         
       }
 }
 
