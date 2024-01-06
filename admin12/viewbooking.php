@@ -13,7 +13,10 @@ $dao=new DataAccess();
     <div class="container_gray_bg" id="home_feat_1">
     <div class="container">
         <h1>Bookings</h1>
-        <input type="date" id="dateFilter" onchange="filterTableByDate()">
+        <label for="startDate">Start Date:</label>
+<input type="date" id="startDate" onchange="filterTableByDateRange()">
+<label for="endDate">End Date:</label>
+<input type="date" id="endDate" onchange="filterTableByDateRange()">
     	<div class="row">
             <div class="col-md-12">
                 <table id="dataTable"  border="1" class="table" style="width:60rem;margin-top:100px;">
@@ -76,8 +79,9 @@ $dao=new DataAccess();
     </div><!-- End container -->
     </div><!-- End container_gray_bg -->
     <script>
-    function filterTableByDate() {
-        var inputDate = document.getElementById("dateFilter").value;
+    function filterTableByDateRange() {
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
         var table = document.getElementById("dataTable");
         var rows = table.getElementsByTagName("tr");
 
@@ -85,8 +89,8 @@ $dao=new DataAccess();
             var cell = rows[i].getElementsByTagName("td")[5];
             var cellDate = cell.textContent || cell.innerText;
 
-            // If the cell date is equal to the input date, show the row; otherwise, hide it
-            if (formatDate(cellDate) === inputDate) {
+            // If the cell date is within the selected range, show the row; otherwise, hide it
+            if (isDateInRange(cellDate, startDate, endDate)) {
                 rows[i].style.display = "";
             } else {
                 rows[i].style.display = "none";
@@ -94,9 +98,9 @@ $dao=new DataAccess();
         }
     }
 
-    function formatDate(inputDate) {
-        // Assuming the inputDate is in the format "yyyy-mm-dd"
-        return inputDate;
+    function isDateInRange(cellDate, startDate, endDate) {
+        // Assuming the cellDate, startDate, and endDate are in the format "yy-mm-dd"
+        return cellDate >= startDate && cellDate <= endDate;
     }
 </script>
     
