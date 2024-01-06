@@ -471,7 +471,7 @@ h6 {
 #hero {
   width: 100%;
   height: 90vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/pexels-artem-podrez-4492051.jpg") top center;
   background-size: cover;
   margin-bottom: -200px;
 }
@@ -795,7 +795,7 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/about.jpg") center center no-repeat;
+  background: url("../img/pexels-anna-shvets-4167542.jpg") center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }

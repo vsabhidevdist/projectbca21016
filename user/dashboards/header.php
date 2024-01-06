@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Medi Care</title>
+  <title>OneCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,7 +46,7 @@
   <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">onecareofficial@gmail.com</a>
         <i class="bi bi-phone"></i> +1 5589 55488 55
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
@@ -68,25 +68,25 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="home.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="home.php#about">About</a></li>
           <li><a class="nav-link scrollto" href="departments.php">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="alldoctors.php">Doctors</a></li>
         
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+         <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
          <?php if(isset($_SESSION['user_id'])){
             $fields3=array('name');
             $rec=$dao->getDataJoin($fields3,'user','id='.$_SESSION['user_id']);
             $name = $rec[0]['name']; 
+            // <li><a >Profile</a></li>
+            // <li><a >Wallet</a></li>
 echo "
             <li class=\"dropdown\"><a href=><span>$name
             </span> <i class=\"bi bi-chevron-down\"></i></a>
             <ul>
             
             
-            <li><a >Profile</a></li>
-            <li><a >Wallet</a></li>
+           
             <li><a href=\"logout.php\">Logout</a></li>
             </ul>
             </li>

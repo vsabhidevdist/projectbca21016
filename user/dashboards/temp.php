@@ -637,7 +637,7 @@ html2=new html2pdf();
 
 
 </script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
 <script>
 window.onload = function () {
     fetch('mail.php?bid=<?=$bid?>', {
@@ -689,5 +689,6 @@ window.onload = function () {
         xhr.send('pdfData=' + encodeURIComponent(pdfDataUrl));
     }
 };
-  </script>
+  </script> -->
 </html>
+ 

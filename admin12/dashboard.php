@@ -1,5 +1,8 @@
 
 <?php require('../config/autoload.php');
+if(!isset($_SESSION['admin_id']))
+header('login/login.php');
+
 include('header.php');
 require('../doctor/dashboards/dbcon.php');
 $dao=new DataAccess;
@@ -328,7 +331,7 @@ while ($row = $info2->fetch_assoc()) {
 						fill: true,
 						backgroundColor: gradient,
 						borderColor: window.theme.primary,
-						data: <?php echo $bsum;?>
+						data: 
 					}]
 				},
 				options: {
