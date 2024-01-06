@@ -132,7 +132,7 @@ if(isset($_SESSION['doctor_id'])){
               <span class="menu-title">Add Schedule</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="mdi mdi-chart-bar menu-icon"></i>
               <span class="menu-title">Charts</span>
@@ -149,7 +149,7 @@ if(isset($_SESSION['doctor_id'])){
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- partial -->

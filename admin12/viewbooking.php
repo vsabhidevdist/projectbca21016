@@ -13,10 +13,25 @@ $dao=new DataAccess();
     <div class="container_gray_bg" id="home_feat_1">
     <div class="container">
         <h1>Bookings</h1>
-        <label for="startDate">Start Date:</label>
-<input type="date" id="startDate" onchange="filterTableByDateRange()">
+       <label for="startDate">Start Date:</label>
+<input class="form-control" type="date" id="startDate" onchange="filterTableByDateRange()">
 <label for="endDate">End Date:</label>
-<input type="date" id="endDate" onchange="filterTableByDateRange()">
+<input class="form-control" type="date" id="endDate" onchange="filterTableByDateRange()">
+<label for="searchInput">Search by Doctor:</label>
+<!-- <input type="text" id="filterInput" placeholder="Search..."> -->
+
+<select class="form-control" type="text" id="filterInput" placeholder="Search...">
+
+<option>..</option>
+<?php
+  $fields3=array('name');
+  $info2=$dao->getDataJoin($fields3,'doctor');
+  foreach($info2 as $row){
+    echo "<option>".$row['name']."</options>";
+  }
+?>
+</select><br>
+<button class="form-control" onclick="refreshPage()">Refresh Page</button>
     	<div class="row">
             <div class="col-md-12">
                 <table id="dataTable"  border="1" class="table" style="width:60rem;margin-top:100px;">
@@ -79,6 +94,7 @@ $dao=new DataAccess();
     </div><!-- End container -->
     </div><!-- End container_gray_bg -->
     <script>
+
     function filterTableByDateRange() {
         var startDate = document.getElementById("startDate").value;
         var endDate = document.getElementById("endDate").value;
@@ -102,5 +118,39 @@ $dao=new DataAccess();
         // Assuming the cellDate, startDate, and endDate are in the format "yy-mm-dd"
         return cellDate >= startDate && cellDate <= endDate;
     }
+
+
+
+
+
+    function filterTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("filterInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2]; // Change index based on the column you want to filter
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Attach the filterTable function to the input's onchange event
+        document.getElementById("filterInput").addEventListener("input", filterTable);
+
+
+        function refreshPage() {
+            location.reload(); // Reloads the current page
+        }
 </script>
     
