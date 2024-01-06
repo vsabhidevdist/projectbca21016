@@ -60,7 +60,7 @@ if(!empty($bookstat))
    foreach($bookstat as $bookings=>$booking){
   $download='';
     if($booking['status']=='consulted' || $booking['status']=='cancelled'){
-        $cancelbtn='disabled';
+        $cancelbtn='hidden';
 
         if($booking['status']=='consulted'){
             $download="  <form method=POST><a href='temp.php?bid=$booking[id]'>
