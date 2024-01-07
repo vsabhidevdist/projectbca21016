@@ -1,7 +1,17 @@
 
 <?php
 require('../config/autoload.php'); 
-
+function calculateAge($dob) {
+    $today = new DateTime('now');
+    $birthDate = DateTime::createFromFormat('Y-m-d', $dob);
+    
+    if (!$birthDate) {
+        return "Invalid date format";
+    }
+    
+    $age = $today->diff($birthDate);
+    return $age->format('%y');
+  }
 $dao=new DataAccess();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -41,7 +51,7 @@ try {
 }
 
 
-$fields3=array('name','age','gender','email','password');
+$fields3=array('name','gender','email','password');
 $info2=$dao->getDataJoin($fields3,'user','id='.$_GET['id']);
 
 if(sendPass($info2[0]['name'],$info2[0]['email'],$info2[0]['password'],$MAIL,$PASS)){

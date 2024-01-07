@@ -26,7 +26,7 @@ $dao=new DataAccess();
                         <th>Email</th>
                         <th>Phone</th>
                        
-                        <th>Passworde</th>
+                        <!-- <th>Passworde</th> -->
                         
                         <th>EDIT/SEND PASSWORD</th>
                      
@@ -35,7 +35,7 @@ $dao=new DataAccess();
 <?php
     
     $actions=array(
-    'edit'=>array('label'=>'Edit','link'=>'edituser.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success')),
+    // 'edit'=>array('label'=>'Edit','link'=>'edituser.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success')),
     
     'delete'=>array('label'=>'Send Password','link'=>'sendpass.php','params'=>array('id'=>'id'),'attributes'=>array('class'=>'btn btn-success'))
     
@@ -52,7 +52,7 @@ $dao=new DataAccess();
    $join=array(
    
 );
-     $fields=array('id','name','gender','dob','email','phone','password');
+     $fields=array('id','name','gender','dob','email','phone');
 
     $users=$dao->selectAsTable($fields,'user',1,1,$actions,1);
     
