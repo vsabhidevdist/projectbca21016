@@ -98,7 +98,7 @@ $rules=array(
 "bid"=>array("required"=>true),
 "summary"=>array("required"=>true),
 "p_t"=>array("required"=>true),
-"nextc"=>array("required"=>false),
+
 
  
 );
@@ -108,14 +108,16 @@ $validator = new FormValidator($rules,$labels);
 
 if(isset($_POST["insert"]))
 {
-
+  if($_POST['nextc']=="")
+  $follow=false;
+  else
+  $follow=true;
 if($validator->validate($_POST))
 {
 
 
-
-
-$data=array(
+if($follow){
+  $data=array(
 
    
     'did'=>$_POST['did'],
@@ -128,9 +130,29 @@ $data=array(
     "bid"=>$_POST['bid'],
     "summary"=>$_POST['summary'],
     "p_t"=>$_POST['p_t'],
-    "nextc"=>$_POST['nextc'],
+    "nextc"=>$_POST['nextc']
      
 );
+}
+else{
+  $data=array(
+
+   
+    'did'=>$_POST['did'],
+    "pid"=>$_POST['pid'],
+    "m_h"=>$_POST['m_h'],
+    "m_a"=>$_POST['m_a'],
+    "r_mp"=>$_POST['r_mp'],
+    "v_s"=>$_POST['v_s'],
+    "lab_results"=>$_POST['lab_results'],
+    "bid"=>$_POST['bid'],
+    "summary"=>$_POST['summary'],
+    "p_t"=>$_POST['p_t'],
+    
+     
+);
+}
+
 
 // print_r($data);
 
@@ -300,7 +322,7 @@ foreach($info as $key=>$book){
                         <textarea class="form-control" name='summary' id="exampleTextarea1" rows="5"></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Follow Up Date: *</label>
+                        <label for="exampleTextarea1">Follow Up Date: </label>
                         <input type="date" class="form-control" name='nextc' >
                       </div>
                       <button type="submit" class="btn btn-primary me-2" name='insert' value='submit'> Submit Record</button>

@@ -114,10 +114,10 @@ foreach($bookedslots as $booking){
     $bid=$booking['id'];
     $status=$booking['status'];
     $timeslot=$booking['appo_time'];
-    $fields3=array('name','age');
+    $fields3=array('name','dob');
     $info2=$dao->getDataJoin($fields3,'user','id='.$booking['user_id']);
     $name=$info2[0]['name'];
-    $age=$info2[0]['age'];
+    $age=calculateAge($info2[0]['dob']);
     echo "
     <div class=\"card\">
     <div class=\"card-header\">
