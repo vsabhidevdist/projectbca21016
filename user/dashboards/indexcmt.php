@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,10 +25,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-   <!-- Template Main CSS File -->
+
+  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/doctorres.css" rel="stylesheet">
-  <link href="assets/css/doctorcard.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: OneCare
@@ -47,13 +45,10 @@
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope"></i> <a href="mailto:onecareofficial@gmail.com">onecareofficial@gmail.com</a>
-        <i class="bi bi-phone"></i> +1 5589 55488 55
+        <i class="bi bi-phone"></i> +91 5589 55488 55
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
-        <?php if(!isset($_SESSION['user_id'])){
-          
-          echo "<i ></i> <a href=\"../../doctor/login/login.php\">Doctor Login</a>";
-        }?>
+      <i class=""></i> <a href="../../doctor/login/login.php">Doctor Login</a>
         <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -66,55 +61,40 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">OneCare</a></h1>
+      <h1 class="logo me-auto"><a href="index.php">OneCare</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.php#about">About</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="departments.php">Departments</a></li>
           <li><a class="nav-link scrollto" href="alldoctors.php">Doctors</a></li>
-        
-         <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-         <?php if(isset($_SESSION['user_id'])){
-            $fields3=array('name');
-            $rec=$dao->getDataJoin($fields3,'user','id='.$_SESSION['user_id']);
-            $name = $rec[0]['name']; 
-            // <li><a >Profile</a></li>
-            // <li><a >Wallet</a></li>
-echo "
-            <li class=\"dropdown\"><a href=><span>$name
-            </span> <i class=\"bi bi-chevron-down\"></i></a>
+         
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-            
-            
-           
-            <li><a href=\"logout.php\">Logout</a></li>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
             </ul>
-            </li>
-            </ul>";
-          } 
-              ?>
+          </li> -->
+          <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      
-       <?php if(isset($_SESSION['user_id'])){
 
-         echo "<a href=\"./mybooking.php\" class=\"appointment-btn scrollto\"><span class=\"d-none d-md-inline\">My</span> Bookings</a>";
-       }
-       else
-       {
-        echo "<a href=\"../login.php\" class=\"appointment-btn scrollto\"><span class=\"d-none d-md-inline\">Login/Sign up</a>";
-       }?>
-      <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+      <a href="../login.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login/Sign up</a>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
     </div>
-  </header>
+  </header><!-- End Header -->

@@ -5,7 +5,7 @@
 
 if(session_destroy()){
 
-    header('Location: login/login.php');
+    header('Location: login/');
 }
  
 

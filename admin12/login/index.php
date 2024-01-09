@@ -24,7 +24,7 @@ if(isset($_POST['login']))
         if($data['username']== 'admin' && $data['password']=='123')
         {
             $_SESSION['admin_id']='admin';
-            header('location:../dashboard.php');
+            header('location:../index.php');
 
 
 	

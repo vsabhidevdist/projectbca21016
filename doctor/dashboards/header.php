@@ -45,10 +45,10 @@ if(isset($_SESSION['doctor_id'])){
         <div class="col-md-12 p-0 m-0">
           <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 font-weight-medium me-3 buy-now-text">You have 20 appointments today!</p>
+              <!-- <div class="d-flex align-items-center justify-content-between">
+                 <p class="mb-0 font-weight-medium me-3 buy-now-text">You have 20 appointments today!</p> 
                 <a href="https://www.bootstrapdash.com/product/plus-admin-template/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
-              </div>
+              </div> -->
             </div>
             <div class="d-flex align-items-center justify-content-between">
               <a href="https://www.bootstrapdash.com/product/plus-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
@@ -82,14 +82,14 @@ if(isset($_SESSION['doctor_id'])){
               <img class="sidebar-brand-logomini" src="../assets/images/logo-mini.svg" alt="" />
               <div class="small font-weight-light pt-1"></div>
             </a>
-            <form class="d-flex align-items-center" action="#">
+            <!-- <form class="d-flex align-items-center" action="#">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <i class="input-group-text border-0 mdi mdi-magnify"></i>
                 </div>
                 <input type="text" class="form-control border-0" placeholder="Search" />
               </div>
-            </form>
+            </form> -->
           </li>
           <li class="pt-2 pb-1">
             <span class="nav-item-head">Tabs</span>
@@ -186,7 +186,7 @@ if(isset($_SESSION['doctor_id'])){
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
               <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
-            <ul class="navbar-nav">
+            <!-- <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="mdi mdi-email-outline"></i>
@@ -273,21 +273,21 @@ if(isset($_SESSION['doctor_id'])){
                   <h6 class="p-3 font-13 mb-0 text-primary text-center">View all notifications</h6>
                 </div>
               </li>
-            </ul>
+            </ul> -->
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item nav-logout d-none d-md-block me-3">
+              <!-- <li class="nav-item nav-logout d-none d-md-block me-3">
                 <a class="nav-link" href="#">Status</a>
               </li>
               <li class="nav-item nav-logout d-none d-md-block">
                 <button class="btn btn-sm btn-danger">Trailing</button>
-              </li>
+              </li> -->
               <li class="nav-item nav-profile dropdown d-none d-md-block">
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                   <div class="nav-profile-text">Menu </div>
                 </a>
                 <div class="dropdown-menu center navbar-dropdown" aria-labelledby="profileDropdown">
-                  <a class="dropdown-item" href="#">
-                    <i class="me-3"></i> Profile </a>
+                  <!-- <a class="dropdown-item" href="#">
+                    <i class="me-3"></i> Profile </a> -->
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout.php">
                     <i class="me-3"></i> Logout </a>
@@ -297,11 +297,11 @@ if(isset($_SESSION['doctor_id'])){
                  
                 </div>
               </li>
-              <li class="nav-item nav-logout d-none d-lg-block">
+              <!-- <li class="nav-item nav-logout d-none d-lg-block">
                 <a class="nav-link" href="index.html">
                   <i class="mdi mdi-home-circle"></i>
                 </a>
-              </li>
+              </li> -->
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
               <span class="mdi mdi-menu"></span>
