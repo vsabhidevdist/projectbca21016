@@ -1,8 +1,10 @@
 <<?php
 require('../../config/autoload.php');
 $a=$_SESSION['user_id'];
+
+$doctorid=$_GET['id'];
 if(!isset($a))
-header('Location: /projectbca21016/user/login.php');
+header('Location: ../login.php?redirect='.$doctorid);
 echo $_SESSION['user_id'];
 $dao=new DataAccess();
 if(isset($a)){

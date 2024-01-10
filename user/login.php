@@ -54,10 +54,10 @@ if(isset($_POST['login']))
 	echo "<script> alert('$a');</script> ";	
 		
    echo"<script> location.replace('displaycategory.php'); </script>";
-			
+			if(!isset($_GET['redirect']))
           header('location:/projectbca21016/user/dashboards/departments.php');
-       
-
+       else
+       header('location:/projectbca21016/user/dashboards/appointment.php?id='.$_GET['redirect']);
 
  }
         else{

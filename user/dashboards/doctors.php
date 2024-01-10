@@ -36,7 +36,9 @@ include("header.php");
           <h2>Doctors</h2>
           <p><h2>Doctors</h2></p>
         </div>
-
+        <style>
+  
+  </style>
         <div class="row">
 <?php
       $fields=array('id','name','department','qualification','image');
@@ -57,7 +59,7 @@ include("header.php");
       //<div class=pic><img src=/projectbca21016/doctorimage/$img class=img-fluid alt=></div>
        echo "<div class=col-lg-6 mt-4 mt-lg-0>
        <div class=member d-flex align-items-start>
-         
+     
          <div style=\"width: 200px; height: 200px; overflow: hidden; border-radius: 50%;\">
          <img src=\"/projectbca21016/doctorimage/$img\" class=\"img-fluid\" style=\"object-fit: cover; width: 100%; height: 100%;\" alt=\"\">
        </div>
@@ -69,6 +71,7 @@ include("header.php");
            
       
          </div>
+    
        </div>
      </div>";
 
