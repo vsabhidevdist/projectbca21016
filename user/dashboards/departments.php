@@ -23,7 +23,7 @@ if(isset($_SESSION['user_id'])){
 if(!empty($bookstat)){
      if($bookstat[0]['status']=='paymentpending'){
        
-       header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+       header('Location: /projectbca21016/user/payment/pendingpayment.php?bid='.$bookstat[0]['bid']); 
       }
     }
   }
@@ -93,7 +93,7 @@ catch (ArrayOffsetException $e) {
         <div class=icon-box>
           <div ><img  class=fas src=/projectbca21016/images/$im width=150px /></div>
           <h4><a href=>$name</a></h4>
-          <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          <p></p>
           <a href=doctors.php?id=$dept class=appointment-btn scrollto><span class=d-none d-md-inline>Make an</span> View Doctors</a>
         </div>
       </div>";

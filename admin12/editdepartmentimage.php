@@ -101,7 +101,8 @@ IMAGE:
 
 
 <?= $form->fileField('image',array('class'=>'form-control')); ?>
-
+<br>
+<button type="submit" name="btn_update" class="form-control">UPDATE</button>
 </div>
 </div>
 
@@ -109,7 +110,6 @@ IMAGE:
 
 
 
-<button type="submit" name="btn_update" >UPDATE</button>
 </form>
 
 </body>

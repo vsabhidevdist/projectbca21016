@@ -52,7 +52,7 @@
       <div class="d-none d-lg-flex social-links align-items-center">
         <?php if(!isset($_SESSION['user_id'])){
           
-          echo "<i ></i> <a href=\"../../doctor/login/login.php\">Doctor Login</a>";
+          echo "<i ></i> <a href=\"../../doctor/login/\">Doctor Login</a>";
         }?>
         <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -66,7 +66,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">OneCare</a></h1>
+      <h1 class="logo me-auto"><a href="index.php">OneCare</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

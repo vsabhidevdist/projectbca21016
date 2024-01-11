@@ -46,7 +46,8 @@ $data=array(
 if($dao->delete('department',$condition))
     {
         $msg="Successfullly Deleted";
-        
+        echo "<script>alert('Successfullly Deleted');</script>)";
+        echo "<script>location.replace('viewdoctor.php');</script>)";
     }
     else
         {$msg="Failed";} ?>
@@ -91,8 +92,9 @@ Department Name:
 
 
 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
 Are you sure to delete this department?
+<button type="submit" class="form-control" name="btn_delete" >DELETE</button>
 </div>
 </div>
 
@@ -100,7 +102,6 @@ Are you sure to delete this department?
 
 
 
-<button type="submit" name="btn_delete" >DELETE</button>
 </form>
 
 </body>

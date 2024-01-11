@@ -1,5 +1,8 @@
 
-<?php require('../config/autoload.php'); ?>
+<?php require('../config/autoload.php');
+if(!isset($_SESSION['admin_id']))
+header('location: login/');
+?>
 
 <?php
 $dao=new DataAccess();
@@ -28,7 +31,7 @@ $dao=new DataAccess();
                        
                         <!-- <th>Passworde</th> -->
                         
-                        <th>EDIT/SEND PASSWORD</th>
+                        <th>SEND PASSWORD</th>
                      
                       
                     </tr>

@@ -12,10 +12,7 @@ $dao=new DataAccess();
   $bookstat=$dao->getDataJoin($fields2,'booking','user_id='.$a.' and id='.$_GET['bid']);
   
 
-    if($bookstat[0]['id']!=$_SESSION['booking_id']){
-
-      header('Location: /projectbca21016/403.html'); 
-    }
+   
     if($bookstat[0]['status']=='confirm'){
 
       header('Location: /projectbca21016/user/payment/confirmation.php'); 

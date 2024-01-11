@@ -1,8 +1,10 @@
 <<?php
 require('../../config/autoload.php');
 $a=$_SESSION['user_id'];
-
+if(isset($_GET['id']))
 $doctorid=$_GET['id'];
+else
+$doctorid=null;
 if(!isset($a))
 header('Location: ../login.php?redirect='.$doctorid);
 echo $_SESSION['user_id'];
@@ -15,7 +17,7 @@ if(isset($a)){
   if(!empty($bookstat)){
     if($bookstat[0]['status']=='paymentpending'){
 
-      header('Location: /projectbca21016/user/payment/pendingpayment.php'); 
+      header('Location: /projectbca21016/user/payment/pendingpayment.php?bid='.$bookstat[0]['bid']); 
     }
   }
 }

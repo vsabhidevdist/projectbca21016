@@ -1,7 +1,7 @@
 
 <?php require('../config/autoload.php');
 if(!isset($_SESSION['admin_id']))
-header('login/login.php');
+header('location: login/');
 
 include('header.php');
 require('../doctor/dashboards/dbcon.php');

@@ -2,7 +2,7 @@
 require('../../config/autoload.php'); 
 $dao=new DataAccess();
 if(!isset($_SESSION['doctor_id']))
-header('location:../login/login.php');
+header('location:../login/');
 if(isset($_SESSION['doctor_id'])){
   $fields3=array('name','image');
   $rec=$dao->getDataJoin($fields3,'doctor','id='.$_SESSION['doctor_id']);

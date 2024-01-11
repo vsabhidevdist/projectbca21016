@@ -1,6 +1,9 @@
 <?php 
 
  require('../config/autoload.php'); 
+
+ if(!isset($_SESSION['admin_id']))
+header('location: login/');
 include("header.php");
 
 $file=new FileUpload();

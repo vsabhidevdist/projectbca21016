@@ -1,5 +1,8 @@
 
-<?php require('../config/autoload.php'); ?>
+<?php require('../config/autoload.php'); 
+if(!isset($_SESSION['admin_id']))
+header('location: login/');
+?>
 <style>
 body{
     
@@ -27,7 +30,7 @@ $dao=new DataAccess();
                         <th>Department</th>
                         <th>Qualification</th>
                         <th>Address</th>
-                        <th>Image</th>
+                        <th >Image</th>
                         <th>Phone</th>
                         <th>DOB</th>
                      
@@ -51,16 +54,19 @@ $dao=new DataAccess();
         'department'=>array('department'),
         'qualification'=>array('qualification'),
         'address'=>array('address'),
-        'images'=>array(array('field'=>"image",'path'=>"../doctorimage/","attributes"=>array("height"=>'100'))),
+        'images'=>array(array('field'=>"image",'path'=>"../doctorimage/","attributes"=>array("height"=>'auto',"width"=>'100px'))),
         'phone'=>array('phone'),
         'dob'=>array('dob')
     );
 
    
-   $join=array();
-     $fields=array('id','name','gender','department','qualification','address','image','phone','dob');
+    $join=array(
+        'department dd'=>array('dd.id=d.department','join'),
+    
+ );
+     $fields=array('d.id','d.name as dname','d.gender','dd.name as depname','d.qualification','d.address','d.image','d.phone','d.dob');
 
-    $users=$dao->selectAsTable($fields,'doctor',1,$join,$actions,$config);
+    $users=$dao->selectAsTable($fields,'doctor d',1,$join,$actions,$config);
     
     echo $users;
                     

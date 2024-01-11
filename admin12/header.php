@@ -45,11 +45,11 @@
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<!-- <li class="sidebar-item">
 						<a class="sidebar-link" href="newuser.php">
               <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">New User</span>
             </a>
-					</li>
+					</li> -->
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="viewbooking.php">
@@ -134,8 +134,8 @@
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
+									<!-- <i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span> -->
 								</div>
 							</a>
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
@@ -199,7 +199,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
 								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
+									<!-- <i class="align-middle" data-feather="message-square"></i> -->
 								</div>
 							</a>
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
@@ -269,7 +269,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Admin" /> <span class="text-dark">Admin</span>
+                <!-- <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Admin" />  --><span class="text-dark">Admin</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<!-- <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>

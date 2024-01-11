@@ -23,7 +23,7 @@ if(isset($_POST['login']))
         $data=array('username'=>$_POST['username'],'password'=>$_POST['password']);
         if($data['username']== 'admin' && $data['password']=='123')
         {
-            $_SESSION['admin_id']='admin';
+            $_SESSION['admin_id']="admin";
             header('location:../index.php');
 
 

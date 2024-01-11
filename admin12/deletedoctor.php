@@ -7,11 +7,11 @@ $dao=new DataAccess();
 $info=$dao->getData('*','doctor','id='.$_GET['id']);
 $file=new FileUpload();
 $elements=array(
-        "name"=>$info[0]['name'],"gender"=>$info[0]['gender'],"department"=>$info[0]['department'],"qualification"=>$info[0]['qualification'],"address"=>$info[0]['address'],"image"=>"","age"=>$info[0]['age'],"phone"=>$info[0]['phone']);
+        "name"=>$info[0]['name'],"gender"=>$info[0]['gender'],"department"=>$info[0]['department'],"qualification"=>$info[0]['qualification'],"address"=>$info[0]['address'],"image"=>"","dob"=>$info[0]['dob'],"phone"=>$info[0]['phone']);
 
 	$form = new FormAssist($elements,$_POST);
 
-$labels=array('name'=>"Doctor Name","gender"=>"Doctor Gender","department"=>"Doctor Department","qualification"=>"Doctor Qualification","address"=>"Doctor Address",'image'=>"Doctor Image",'age'=>'Doctor age' );
+$labels=array('name'=>"Doctor Name","gender"=>"Doctor Gender","department"=>"Doctor Department","qualification"=>"Doctor Qualification","address"=>"Doctor Address",'image'=>"Doctor Image",'dob'=>'Doctor dob' );
 
 $rules=array(
   "name"=>array("required"=>true,"minlength"=>2,"maxlength"=>30,"alphaspaceonly"=>true),
@@ -21,7 +21,7 @@ $rules=array(
     "address"=>array("required"=>true,"minlength"=>1,"maxlength"=>50,"alphaspaceonly"=>true),
     "image"=>array("filerequired"=>true),
     "phone"=>array("required"=>true,"minlength"=>10,"maxlength"=>10,"integeronly"=>true),
-    "age"=>array("required"=>true,"minlength"=>1,"maxlength"=>2,"integeronly"=>true),
+    "dob"=>array("required"=>true,"minlength"=>1,"maxlength"=>20),
      
 );
     
@@ -43,8 +43,9 @@ if(isset($flag))
 
 if($dao->delete('doctor',$condition))
     {
-        $msg="Successfullly Updated";
-
+        $msg="Successfullly deleted";
+        echo "<script>alert('Successfullly Deleted');</script>)";
+        echo "<script>location.replace('viewdoctor.php');</script>)";
     }
     else
         {$msg="Failed";} ?>
@@ -105,9 +106,9 @@ Gender:
 
 <div class="row">
                     <div class="col-md-6">
-Age:
+DOB:
 
-<?= $form->textBox('age',array('class'=>'form-control')); ?>
+<?= $form->textBox('dob',array('class'=>'form-control')); ?>
 
 
 </div>
@@ -159,6 +160,7 @@ Address:
                     <div class="col-md-6">
 Are you sure to delete the doctor?
 
+<button type="submit" name="btn_delete" class="form-control bg-danger text-white" >Delete</button>
 </div>
 </div>
 
@@ -166,7 +168,6 @@ Are you sure to delete the doctor?
 
 
 
-<button type="submit" name="btn_delete"  >Delete</button>
 </form>
 
 </body>
